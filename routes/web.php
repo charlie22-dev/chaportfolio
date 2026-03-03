@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Spatie\Export\Exporter;
 
 Route::get('/', function () {
     return view('sections.portfolio');
@@ -14,6 +15,14 @@ Route::get('/tech-stack', function () {
 Route::post('/chat', function (Request $request) {
     $message = $request->input('message');
     $apiKey = env('GEMINI_API_KEY');
+
+   
+
+Route::get('/export-static', function () {
+    $exporter = new \Spatie\Export\Exporter();
+    $exporter->export(public_path('static'));
+    return 'Exported!';
+});
 
     try {
         $response = \Illuminate\Support\Facades\Http::timeout(30)->post(
