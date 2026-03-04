@@ -22,16 +22,21 @@ Route::post('/contact', function (Request $request) {
         'message' => 'required|string',
     ]);
 
-    \Illuminate\Support\Facades\Mail::raw(
-        "Name: {$request->name}\nEmail: {$request->email}\n\nMessage:\n{$request->message}",
-        function ($mail) use ($request) {
-            $mail->to('malinaocharlie74@gmail.com')
-                 ->subject("New message from {$request->name} - Portfolio")
-                 ->replyTo($request->email, $request->name);
-        }
-    );
+    try {
+        \Illuminate\Support\Facades\Mail::raw(
+            "Name: {$request->name}\nEmail: {$request->email}\n\nMessage:\n{$request->message}",
+            function ($mail) use ($request) {
+                $mail->to('malinaocharlie74@gmail.com')
+                     ->subject("New message from {$request->name} - Portfolio")
+                     ->replyTo($request->email, $request->name);
+            }
+        );
 
-    return back()->with('success', 'Message sent! I will get back to you soon 😊');
+        return back()->with('success', 'Message sent! I will get back to you soon.');
+
+    } catch (\Exception $e) {
+        return back()->with('error', 'Something went wrong. Please email me directly at malinaocharlie74@gmail.com');
+    }
 });
 
 Route::post('/chat', function (Request $request) {

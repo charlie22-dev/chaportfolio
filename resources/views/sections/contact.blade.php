@@ -21,6 +21,12 @@
     {{ session('success') }}
   </div>
   @endif
+  
+  @if(session('error'))
+<div class="mb-6 px-4 py-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 text-sm font-medium">
+  {{ session('error') }}
+</div>
+@endif
 
   {{-- Form --}}
   <form action="/contact" method="POST" class="flex flex-col gap-4">
