@@ -3,6 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+Route::get('/', function () {
+    return view('sections.portfolio');
+});
+
+Route::get('/tech-stack', function () {
+    return view('sections.techstack');
+});
+
+Route::get('/contact', function () {
+    return view('sections.contact');
+});
+
 Route::post('/chat', function (Request $request) {
     $message = $request->input('message');
     $apiKey  = env('GROQ_API_KEY');
