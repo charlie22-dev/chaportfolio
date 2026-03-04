@@ -330,7 +330,7 @@
     <div id="chatMessages" class="flex flex-col gap-3 p-4 h-72 overflow-y-auto text-sm scroll-smooth">
       <div class="flex justify-start">
         <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl rounded-bl-sm px-3 py-2 max-w-[85%] text-sm animate-fade-in">
-          👋 Hi there! I'm Charlie — welcome to my portfolio! Feel free to ask me anything 😊
+          Hey, I'm Charlie Mer Libatod — an IT student and aspiring software engineer from Malabon City. Ask me anything about my work, skills, or background.
         </div>
       </div>
     </div>
