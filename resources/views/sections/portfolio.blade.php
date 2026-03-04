@@ -361,46 +361,6 @@
 
 </div>
 
-  {{-- Chat Window --}}
-  <div id="chatWindow" class="hidden mb-3 w-80 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-    
-    {{-- Header --}}
-    <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between bg-gray-50 dark:bg-gray-800">
-      <div class="flex items-center gap-2">
-        <div class="w-2 h-2 rounded-full bg-green-400"></div>
-        <span class="text-sm font-semibold text-black dark:text-white">Chat with Charlie</span>
-      </div>
-      <button onclick="toggleChat()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-lg leading-none">✕</button>
-    </div>
-
-    {{-- Messages --}}
-    <div id="chatMessages" class="flex flex-col gap-3 p-4 h-72 overflow-y-auto text-sm">
-      <div class="bg-gray-100 dark:bg-gray-800 rounded-xl px-3 py-2 text-black dark:text-white max-w-[85%]">
-        Hi, I’m Charlie Mer Libatod from Malabon City, Philippines. I’m a BS Information Technology student at Global Reciprocal Colleges and an aspiring software engineer and web developer.
-
-I started coding in 2023 with “Hello World,” and I’m currently learning Python, C#, JavaScript, Laravel, Tailwind CSS, React, and Node.js. I also joined our School Hackathon 2024 and gained IT Support experience in 2024.
-
-I’m passionate about building projects and continuously improving my skills in tech.
-      </div>
-    </div>
-
-    {{-- Input --}}
-    <div class="p-3 border-t border-gray-100 dark:border-gray-800 flex gap-2">
-      <input id="chatInput" type="text" placeholder="Ask something..." onkeydown="if(event.key==='Enter') sendMessage()"
-        class="flex-1 text-xs px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-gray-400 dark:focus:border-gray-500"/>
-      <button onclick="sendMessage()" class="px-3 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-semibold rounded-lg hover:bg-gray-700 transition">
-        Send
-      </button>
-    </div>
-  </div>
-
-  {{-- Toggle Button --}}
-  <button onclick="toggleChat()" class="flex items-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-semibold px-4 py-3 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-100 transition">
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-    Chat with Charlie
-  </button>
-
-</div>
 
 @endsection
 @push('scripts')
