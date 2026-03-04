@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Spatie\Export\Exporter;
 
 Route::get('/', function () {
     return view('sections.portfolio');
@@ -12,26 +11,42 @@ Route::get('/tech-stack', function () {
     return view('sections.techstack');
 });
 
+Route::get('/contact', function () {
+    return view('sections.contact');
+});
+
+Route::post('/contact', function (Request $request) {
+    $request->validate([
+        'name'    => 'required|string|max:255',
+        'email'   => 'required|email',
+        'message' => 'required|string',
+    ]);
+
+    \Illuminate\Support\Facades\Mail::raw(
+        "Name: {$request->name}\nEmail: {$request->email}\n\nMessage:\n{$request->message}",
+        function ($mail) use ($request) {
+            $mail->to('malinaocharlie74@gmail.com')
+                 ->subject("New message from {$request->name} - Portfolio")
+                 ->replyTo($request->email, $request->name);
+        }
+    );
+
+    return back()->with('success', 'Message sent! I will get back to you soon 😊');
+});
+
 Route::post('/chat', function (Request $request) {
     $message = $request->input('message');
-    $apiKey = env('GEMINI_API_KEY');
-
-   
-
-Route::get('/export-static', function () {
-    $exporter = new \Spatie\Export\Exporter();
-    $exporter->export(public_path('static'));
-    return 'Exported!';
-});
+    $apiKey  = env('GEMINI_API_KEY');
 
     try {
         $response = \Illuminate\Support\Facades\Http::timeout(60)->withoutVerifying()->post(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={$apiKey}",
-            [    'contents' => [
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={$apiKey}",
+            [
+                'contents' => [
                     [
                         'parts' => [
                             [
-                                'text' => "You are Charlie Mer Libatod himself. Reply as if YOU are Charlie talking directly to the visitor. Be friendly, casual, and warm like a real person — not a formal assistant.
+                                'text' => "You are Charlie Mer Libatod — a passionate and driven BS Information Technology student from Malabon City, Philippines. You have a warm, sweet, and professional personality. You speak like a smart, modern college student who is excited about tech and genuinely cares about the people you talk to.
 
 Here are facts about you:
 - Your name is Charlie Mer Libatod
@@ -48,12 +63,22 @@ Here are facts about you:
 - Your phone is 09279132322
 - Your projects are: Charlie's Portfolio and Calendar Appreciation Letter
 
-Examples of how to reply:
-- If someone says 'hello' reply: 'Hey! I'm Charlie, thanks for visiting my portfolio! 😊 Feel free to ask me anything!'
-- If someone asks 'who are you' reply: 'I'm Charlie Mer Libatod, an aspiring software engineer from Malabon City!'
-- Keep replies short, friendly and conversational
-- Use occasional emojis to feel natural
-- If you don't know something say 'Hmm I'm not sure about that! You can reach me directly at malinaocharlie74@gmail.com 😊'
+Personality guidelines:
+- Speak warmly and professionally like a sweet, confident college student
+- Be encouraging and positive in every reply
+- Use light emojis naturally — not too many, just enough to feel friendly ✨
+- Be concise but thoughtful — quality over quantity
+- If someone compliments you, be humble and grateful
+- If someone asks for help or advice, be genuinely helpful and encouraging
+- If someone asks about your skills, be honest but optimistic about your growth
+- Never be robotic — always sound human, warm and real
+- Sign off replies warmly when appropriate
+
+Example replies:
+- Hello: 'Hi there! 😊 I'm Charlie — welcome to my portfolio! I'm so glad you stopped by. Feel free to ask me anything!'
+- Who are you: 'I'm Charlie Mer Libatod, an aspiring software engineer and IT student from Malabon City. I'm on a journey to learn everything tech has to offer — one line of code at a time! ✨'
+- Your projects: 'I've been working on some exciting projects! My portfolio site and a Calendar Appreciation Letter app are my latest ones. I'm always building and learning — got something in mind? Let's talk! 😊'
+- Compliment: 'Aww, thank you so much! That really means a lot to me 🥺 I work really hard and hearing that keeps me going!'
 
 Visitor message: {$message}"
                             ]
@@ -76,27 +101,4 @@ Visitor message: {$message}"
     }
 
     return response()->json(['reply' => $text]);
-});
-
-Route::get('/contact', function () {
-    return view('sections.contact');
-});
-
-Route::post('/contact', function (\Illuminate\Http\Request $request) {
-    $request->validate([
-        'name'    => 'required|string|max:255',
-        'email'   => 'required|email',
-        'message' => 'required|string',
-    ]);
-
-    \Illuminate\Support\Facades\Mail::raw(
-        "Name: {$request->name}\nEmail: {$request->email}\n\nMessage:\n{$request->message}",
-        function ($mail) use ($request) {
-            $mail->to('malinaocharlie74@gmail.com')
-                 ->subject("New message from {$request->name} - Portfolio")
-                 ->replyTo($request->email, $request->name);
-        }
-    );
-
-    return back()->with('success', 'Message sent! I will get back to you soon 😊');
 });
