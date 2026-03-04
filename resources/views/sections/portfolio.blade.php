@@ -233,16 +233,21 @@
 
     {{-- RIGHT: Social + Open To --}}
     {{-- SOCIAL LINKS --}}
+{{-- SOCIAL LINKS --}}
 <div>
   <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-3">Social Links</p>
   <div class="flex flex-col gap-2">
     @foreach ([
-      ['GitHub',    'https://github.com/charlie22-dev',          'github.com/charlie22-dev'],
-      ['Facebook',  'https://www.facebook.com/charlie.libatod',  'facebook.com/charlie.libatod'],
-      ['Phone',     'tel:09279132322',                           '0927 913 2322'],
+      ['GitHub',    'https://github.com/charlie22-dev',               'github.com/charlie22-dev',          '🐙'],
+      ['Facebook',  'https://www.facebook.com/charlie.libatod',        'facebook.com/charlie.libatod',      '📘'],
+      ['Instagram', 'https://www.instagram.com/h3y.chaa',              'instagram.com/h3y.chaa',            '📸'],
+      ['Phone',     'tel:09279132322',                                  '0927 913 2322',                     '📱'],
     ] as $social)
     <a href="{{ $social[1] }}" target="_blank" class="flex items-center justify-between px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition group">
-      <span class="text-sm font-medium text-black dark:text-white">{{ $social[0] }}</span>
+      <div class="flex items-center gap-3">
+        <span class="text-base">{{ $social[3] }}</span>
+        <span class="text-sm font-medium text-black dark:text-white">{{ $social[0] }}</span>
+      </div>
       <div class="flex items-center gap-2">
         <span class="text-xs text-gray-400 hidden sm:block">{{ $social[2] }}</span>
         <span class="text-gray-400 group-hover:translate-x-0.5 transition-transform">↗</span>
@@ -300,7 +305,61 @@
   </footer>
 
   {{-- CHAT BOT BUTTON --}}
-<div class="fixed bottom-5 right-5 z-50">
+{{-- CHAT BOT BUTTON --}}
+<div class="fixed bottom-4 right-3 sm:right-5 z-50">
+
+  {{-- Chat Window --}}
+  <div id="chatWindow" class="hidden mb-3 w-[85vw] sm:w-80 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300">
+
+    {{-- Header --}}
+    <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between bg-gray-50 dark:bg-gray-800">
+      <div class="flex items-center gap-2">
+        <div class="relative">
+          <div class="w-8 h-8 rounded-full bg-gray-900 dark:bg-white flex items-center justify-center text-white dark:text-gray-900 text-xs font-bold">C</div>
+          <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-white dark:border-gray-800"></div>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-black dark:text-white leading-tight">Charlie Mer</p>
+          <p class="text-[10px] text-green-500 font-medium">● Online now</p>
+        </div>
+      </div>
+      <button onclick="toggleChat()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">✕</button>
+    </div>
+
+    {{-- Messages --}}
+    <div id="chatMessages" class="flex flex-col gap-3 p-4 h-72 overflow-y-auto text-sm scroll-smooth">
+      <div class="flex justify-start">
+        <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl rounded-bl-sm px-3 py-2 max-w-[85%] text-sm animate-fade-in">
+          👋 Hi there! I'm Charlie — welcome to my portfolio! Feel free to ask me anything 😊
+        </div>
+      </div>
+    </div>
+
+    {{-- Input --}}
+    <div class="p-3 border-t border-gray-100 dark:border-gray-800 flex gap-2 bg-white dark:bg-gray-900">
+      <input id="chatInput" type="text" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendMessage()"
+        class="flex-1 text-xs px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-gray-400 dark:focus:border-gray-500 transition"/>
+      <button onclick="sendMessage()" class="px-3 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold rounded-xl hover:bg-gray-700 dark:hover:bg-gray-100 transition hover:scale-105 active:scale-95">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+      </button>
+    </div>
+  </div>
+
+  {{-- Toggle Button --}}
+  <button onclick="toggleChat()" id="chatToggleBtn"
+    class="flex items-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold px-5 py-3.5 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 group relative">
+
+    {{-- Ping animation --}}
+    <span class="absolute -top-1 -right-1 w-3 h-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
+    </span>
+
+    <svg class="w-4 h-4 group-hover:rotate-12 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+    Chat with Charlie
+  </button>
+
+</div>
 
   {{-- Chat Window --}}
   <div id="chatWindow" class="hidden mb-3 w-80 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col">

@@ -38,6 +38,13 @@
     animation-play-state: paused;
   }
 
+  @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
   </style>
 </head>
 <body class="bg-white dark:bg-[#0f1117] text-black dark:text-white antialiased transition-colors duration-200">
