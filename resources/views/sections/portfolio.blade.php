@@ -344,7 +344,6 @@ I’m passionate about building projects and continuously improving my skills in
 </div>
 
 @endsection
-
 @push('scripts')
 <script>
   // Dark mode
@@ -361,37 +360,20 @@ I’m passionate about building projects and continuously improving my skills in
     });
   })();
 
-  // Carousel auto scroll
-// Smooth infinite auto scroll
-const carousel = document.getElementById('carousel');
-let scrollAmount = 0;
+  // Smooth infinite auto scroll
+  const carousel = document.getElementById('carousel');
+  let scrollAmount = 0;
 
-function smoothScroll() {
-  scrollAmount += 0.5;
-  if (scrollAmount >= carousel.scrollWidth / 2) {
-    scrollAmount = 0;
+  function smoothScroll() {
+    scrollAmount += 0.5;
+    if (scrollAmount >= carousel.scrollWidth / 2) {
+      scrollAmount = 0;
+    }
+    carousel.scrollLeft = scrollAmount;
+    requestAnimationFrame(smoothScroll);
   }
-  carousel.scrollLeft = scrollAmount;
-  requestAnimationFrame(smoothScroll);
-}
 
-smoothScroll();
-
-  // Pause on hover
-  carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
-  carousel.addEventListener('mouseleave', () => {
-    autoScroll = setInterval(() => {
-      if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth) {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: 240, behavior: 'smooth' });
-      }
-    }, 2500);
-  });
-
-  function scrollCarousel(direction) {
-    carousel.scrollBy({ left: direction * 240, behavior: 'smooth' });
-  }
+  smoothScroll();
 
   // Chat
   function toggleChat() {
@@ -413,7 +395,7 @@ smoothScroll();
     input.value = '';
     messages.scrollTop = messages.scrollHeight;
 
-    // Typing indicator (3 dots like messenger)
+    // Typing indicator
     messages.innerHTML += `
       <div id="typing" class="flex justify-start">
         <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-bl-sm px-4 py-3 flex items-center gap-1">
@@ -425,16 +407,28 @@ smoothScroll();
     messages.scrollTop = messages.scrollHeight;
 
     // Send to Gemini
-    const res = await fetch('/chat', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-      },
-      body: JSON.stringify({ message })
-    });
-
-    const data = await res.json();
+    let data;
+    try {
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ message })
+      });
+      data = await res.json();
+    } catch (err) {
+      document.getElementById('typing')?.remove();
+      messages.innerHTML += `
+        <div class="flex justify-start">
+          <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-bl-sm px-3 py-2 max-w-[85%] text-sm text-black dark:text-white">
+            Sorry, connection is slow. Please try again! 😊
+          </div>
+        </div>`;
+      messages.scrollTop = messages.scrollHeight;
+      return;
+    }
 
     // Remove typing and show reply
     document.getElementById('typing')?.remove();

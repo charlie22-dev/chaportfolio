@@ -17,9 +17,27 @@
         extend: {}
       }
     }
+
+    
   </script>
   <style>
-    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  
+    
+  body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  
+  @keyframes scrollUp {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+
+  .animate-scroll {
+    animation: scrollUp 30s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
   </style>
 </head>
 <body class="bg-white dark:bg-[#0f1117] text-black dark:text-white antialiased transition-colors duration-200">
