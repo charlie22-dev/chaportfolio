@@ -1,3 +1,8 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 Route::post('/chat', function (Request $request) {
     $message = $request->input('message');
     $apiKey  = env('GROQ_API_KEY');
