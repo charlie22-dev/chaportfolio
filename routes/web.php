@@ -77,3 +77,26 @@ Visitor message: {$message}"
 
     return response()->json(['reply' => $text]);
 });
+
+Route::get('/contact', function () {
+    return view('sections.contact');
+});
+
+Route::post('/contact', function (\Illuminate\Http\Request $request) {
+    $request->validate([
+        'name'    => 'required|string|max:255',
+        'email'   => 'required|email',
+        'message' => 'required|string',
+    ]);
+
+    \Illuminate\Support\Facades\Mail::raw(
+        "Name: {$request->name}\nEmail: {$request->email}\n\nMessage:\n{$request->message}",
+        function ($mail) use ($request) {
+            $mail->to('malinaocharlie74@gmail.com')
+                 ->subject("New message from {$request->name} - Portfolio")
+                 ->replyTo($request->email, $request->name);
+        }
+    );
+
+    return back()->with('success', 'Message sent! I will get back to you soon 😊');
+});
