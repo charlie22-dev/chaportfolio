@@ -13,49 +13,42 @@
   </a>
 
   <h1 class="text-3xl font-bold tracking-tight text-black dark:text-white mb-2" style="font-family: 'DM Serif Display', serif;">Get in Touch</h1>
-  <p class="text-sm text-gray-500 dark:text-gray-400 mb-8">Send me a message and I'll get back to you as soon as possible!</p>
+  <p class="text-sm text-gray-500 dark:text-gray-400 mb-8">Send me a message and I will get back to you as soon as possible.</p>
 
   {{-- Success Message --}}
-  @if(session('success'))
-  <div class="mb-6 px-4 py-3 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 text-sm font-medium">
-    {{ session('success') }}
+  <div id="successMsg" class="hidden mb-6 px-4 py-3 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 text-sm font-medium">
+    Message sent! I will get back to you soon.
   </div>
-  @endif
-  
-  @if(session('error'))
-<div class="mb-6 px-4 py-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 text-sm font-medium">
-  {{ session('error') }}
-</div>
-@endif
+
+  {{-- Error Message --}}
+  <div id="errorMsg" class="hidden mb-6 px-4 py-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 text-sm font-medium">
+    Something went wrong. Please try again.
+  </div>
 
   {{-- Form --}}
-  <form action="/contact" method="POST" class="flex flex-col gap-4">
-    @csrf
+  <form id="contactForm" action="https://formspree.io/f/xwvngydg" method="POST" class="flex flex-col gap-4">
 
     <div>
       <label class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-1.5 block">Your Name</label>
-      <input type="text" name="name" value="{{ old('name') }}" placeholder="Juan dela Cruz"
+      <input type="text" name="name" required placeholder="Juan dela Cruz"
         class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-500 transition"/>
-      @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
     </div>
 
     <div>
       <label class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-1.5 block">Your Email</label>
-      <input type="email" name="email" value="{{ old('email') }}" placeholder="juan@email.com"
+      <input type="email" name="email" required placeholder="juan@email.com"
         class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-500 transition"/>
-      @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
     </div>
 
     <div>
       <label class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-1.5 block">Message</label>
-      <textarea name="message" rows="6" placeholder="Hi Charlie, I wanted to reach out about..."
-        class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-500 transition resize-none">{{ old('message') }}</textarea>
-      @error('message') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+      <textarea name="message" rows="6" required placeholder="Hi Charlie, I wanted to reach out about..."
+        class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white text-sm focus:outline-none focus:border-gray-400 dark:focus:border-gray-500 transition resize-none"></textarea>
     </div>
 
-    <button type="submit"
+    <button type="submit" id="submitBtn"
       class="w-full py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold hover:bg-gray-700 dark:hover:bg-gray-100 transition">
-      Send Message 📨
+      Send Message
     </button>
 
   </form>
@@ -71,5 +64,42 @@
     const saved = localStorage.getItem('theme') || 'light';
     if (saved === 'dark') html.classList.add('dark');
   })();
+
+  const form       = document.getElementById('contactForm');
+  const submitBtn  = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('successMsg');
+  const errorMsg   = document.getElementById('errorMsg');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/xwvngydg', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.reset();
+        successMsg.classList.remove('hidden');
+        errorMsg.classList.add('hidden');
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+      } else {
+        throw new Error('Failed');
+      }
+    } catch (err) {
+      errorMsg.classList.remove('hidden');
+      successMsg.classList.add('hidden');
+      submitBtn.textContent = 'Send Message';
+      submitBtn.disabled = false;
+    }
+  });
 </script>
 @endpush

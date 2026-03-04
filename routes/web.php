@@ -15,30 +15,6 @@ Route::get('/contact', function () {
     return view('sections.contact');
 });
 
-Route::post('/contact', function (Request $request) {
-    $request->validate([
-        'name'    => 'required|string|max:255',
-        'email'   => 'required|email',
-        'message' => 'required|string',
-    ]);
-
-    try {
-        \Illuminate\Support\Facades\Mail::raw(
-            "Name: {$request->name}\nEmail: {$request->email}\n\nMessage:\n{$request->message}",
-            function ($mail) use ($request) {
-                $mail->to('malinaocharlie74@gmail.com')
-                     ->subject("New message from {$request->name} - Portfolio")
-                     ->replyTo($request->email, $request->name);
-            }
-        );
-
-        return back()->with('success', 'Message sent! I will get back to you soon.');
-
-    } catch (\Exception $e) {
-        return back()->with('error', 'Something went wrong. Please email me directly at malinaocharlie74@gmail.com');
-    }
-});
-
 Route::post('/chat', function (Request $request) {
     $message = $request->input('message');
     $apiKey  = env('GEMINI_API_KEY');
