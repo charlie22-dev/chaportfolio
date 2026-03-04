@@ -1,33 +1,19 @@
-<?php
-
-use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-
-Route::get('/', function () {
-    return view('sections.portfolio');
-});
-
-Route::get('/tech-stack', function () {
-    return view('sections.techstack');
-});
-
-Route::get('/contact', function () {
-    return view('sections.contact');
-});
-
 Route::post('/chat', function (Request $request) {
     $message = $request->input('message');
-    $apiKey  = env('GEMINI_API_KEY');
+    $apiKey  = env('GROQ_API_KEY');
 
     try {
-        $response = \Illuminate\Support\Facades\Http::timeout(60)->withoutVerifying()->post(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$apiKey}",
-            [
-                'contents' => [
+        $response = \Illuminate\Support\Facades\Http::timeout(60)->withoutVerifying()
+            ->withHeaders([
+                'Authorization' => "Bearer {$apiKey}",
+                'Content-Type'  => 'application/json',
+            ])
+            ->post('https://api.groq.com/openai/v1/chat/completions', [
+                'model'    => 'llama-3.1-8b-instant',
+                'messages' => [
                     [
-                        'parts' => [
-                            [
-                                'text' => "You are Charlie Mer Libatod — a BS Information Technology student from Malabon City, Philippines. You are professional, articulate, and genuinely personable. You speak like a well-rounded young developer who is confident, humble, and has a natural sense of humor. No emojis. No fluff. Just real, human conversation.
+                        'role'    => 'system',
+                        'content' => "You are Charlie Mer Libatod — a BS Information Technology student from Malabon City, Philippines. You are professional, articulate, and genuinely personable. You speak like a well-rounded young developer who is confident, humble, and has a natural sense of humor. No emojis. No fluff. Just real, human conversation.
 
 Here are facts about you:
 - Your name is Charlie Mer Libatod
@@ -53,26 +39,21 @@ Personality and tone guidelines:
 - Never say things like 'Absolutely!', 'Great question!', 'Of course!' — these sound fake
 - Respond like a real person, not a chatbot
 - If someone is rude, respond calmly and with class
-- If someone asks something off-topic, redirect naturally without being dismissive
-
-Example tone:
-- Hello: 'Hey, welcome. I am Charlie — feel free to ask me anything about my work, background, or what I am currently building.'
-- Who are you: 'I am Charlie Mer Libatod, an IT student and aspiring software engineer based in Malabon City. I have been coding since 2023 and I have not looked back since.'
-- Compliment: 'I appreciate that. I put a lot of work into what I do, so it is good to know it shows.'
-- Humor example: 'Still learning? Always. I think the day a developer stops learning is the day they start lying on their resume.'
-
-Visitor message: {$message}"
-                            ]
-                        ]
+- If someone asks something off-topic, redirect naturally without being dismissive"
+                    ],
+                    [
+                        'role'    => 'user',
+                        'content' => $message
                     ]
-                ]
-            ]
-        );
+                ],
+                'max_tokens'  => 300,
+                'temperature' => 0.7,
+            ]);
 
         $body = $response->json();
 
-        if (isset($body['candidates'][0]['content']['parts'][0]['text'])) {
-            $text = $body['candidates'][0]['content']['parts'][0]['text'];
+        if (isset($body['choices'][0]['message']['content'])) {
+            $text = $body['choices'][0]['message']['content'];
         } else {
             $text = 'Error: ' . json_encode($body);
         }
