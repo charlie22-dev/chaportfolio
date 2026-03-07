@@ -282,6 +282,8 @@
           asset('images/charlie9.jpg'),
           asset('images/charlie10.jpg'),
           asset('images/charlie11.jpg'),
+          asset('images/group1.jpg'),
+          asset('images/group2.jpg'),
         ];
         @endphp
         @foreach (array_merge($galleryImages, $galleryImages) as $img)
