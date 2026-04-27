@@ -151,7 +151,7 @@
       <div class="flex flex-col gap-2">
         @foreach ([
           ["Tipid Tracker", 'A comprehensive budget manager web application.', 'charlie22.pythonanywhere.com', 'https://charlie22.pythonanywhere.com/'],
-          ["Charlie's Portfolio", 'Personal portfolio website built with Laravel and Tailwind CSS', 'chaportfolio.onrender.com', 'https://chaportfolio.onrender.com/'],
+          ["Charlie's Portfolio", 'Personal portfolio website built with Laravel and Tailwind CSS', 'chaportfolio.onrender.com', 'https://chaportfolio-1.onrender.com/'],
           ['Calendar Appreciation Letter','A calendar-based appreciation letter web app', 'github.com/charlie22-dev', 'https://charlie22-dev.github.io/appreciation-letterv2/'],
         ] as $project)
         <a href="{{ $project[3] }}" target="_blank" class="flex items-start justify-between border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition group">
