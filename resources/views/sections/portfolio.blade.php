@@ -23,11 +23,11 @@
             </span>
           </button>
         </div>
-        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-1">
+        <p class="text-sm text-gray-800 dark:text-gray-400 mt-1 flex items-center gap-1 font-medium">
           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           Malabon City, Philippines
         </p>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+        <p class="text-base text-gray-900 dark:text-gray-300 mt-2 font-medium">
           Aspiring Software Engineer \ Web Developer \ Lifelong Learner
         </p>
         <div class="flex gap-2 flex-wrap mt-4">
@@ -72,10 +72,10 @@
         ['Currently Learning',['React', 'Node.js', 'MySQL', 'Docker', 'TypeScript']],
       ] as [$group, $tags])
       <div class="mb-5">
-        <p class="text-xs font-bold text-gray-700 dark:text-gray-300 mb-2.5">{{ $group }}</p>
-        <div class="flex flex-wrap gap-1.5">
+        <p class="text-sm font-bold text-gray-900 dark:text-white mb-2">{{ $group }}</p>
+        <div class="flex flex-wrap gap-4">
           @foreach ($tags as $tag)
-            <span class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs px-3 py-1.5 rounded-full cursor-default hover:bg-gray-200 dark:hover:bg-gray-700 transition border border-gray-200 dark:border-gray-700">{{ $tag }}</span>
+            <span class="text-gray-900 dark:text-gray-300 text-sm font-medium cursor-default">{{ $tag }}</span>
           @endforeach
         </div>
       </div>
@@ -90,77 +90,35 @@
     {{-- ID Card --}}
     <div class="flex justify-start">
       <div id="devCard"
-        class="relative w-64 sm:w-72 rounded-2xl overflow-hidden cursor-pointer select-none shadow-xl border border-gray-700/50 group"
-        style="transform-style: preserve-3d; transition: transform 0.2s ease, box-shadow 0.2s ease; background: linear-gradient(135deg, #1f2233 0%, #12131c 100%);"
+        class="relative w-64 sm:w-72 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer select-none shadow-xl border border-gray-800/60 group flex flex-col p-7"
+        style="transform-style: preserve-3d; transition: transform 0.2s ease, box-shadow 0.2s ease; background: linear-gradient(145deg, #2a2a2a 0%, #111111 100%);"
         onmousemove="tiltCard(event)"
         onmouseleave="resetCard()">
         
-        {{-- Background Glow --}}
-        <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl group-hover:bg-purple-500/30 transition duration-500"></div>
-        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl group-hover:bg-blue-500/30 transition duration-500"></div>
-        
-        <div class="relative p-5 z-10 flex flex-col h-full backdrop-blur-md">
-          {{-- Header: Organization & Chip --}}
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <p class="text-[10px] font-bold tracking-widest text-purple-400 uppercase">Independent Developer</p>
-              <p class="text-[9px] text-gray-400 font-mono mt-0.5">ID: DEV-2026-CH</p>
-            </div>
-            {{-- Simulating a smart chip --}}
-            <div class="w-8 h-6 bg-gradient-to-br from-yellow-200 to-yellow-500 rounded-md opacity-80 border border-yellow-600 flex items-center justify-center relative overflow-hidden shrink-0">
-              <div class="w-full h-px bg-yellow-700/50 absolute top-1/2 -translate-y-1/2"></div>
-              <div class="w-px h-full bg-yellow-700/50 absolute left-1/2 -translate-x-1/2"></div>
-              <div class="w-4 h-3 border border-yellow-700/50 rounded-sm absolute"></div>
-            </div>
-          </div>
-          
-          {{-- Profile Photo & Status --}}
-          <div class="flex flex-col items-center mb-4">
-            <div class="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-purple-500 to-blue-500 mb-2">
-              <img src="{{ asset('images/charlie.jpg') }}" alt="Charlie" class="w-full h-full rounded-full object-cover border-2 border-[#12131c]">
-            </div>
-            <span class="bg-green-500/10 border border-green-500/20 text-green-400 text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Active Developer
-            </span>
-          </div>
-          
-          {{-- Details --}}
-          <div class="text-center mb-5">
-            <h3 class="text-lg font-bold text-white tracking-tight">Charlie Mer Libatod</h3>
-            <p class="text-xs text-purple-300 font-medium">Software Developer</p>
-            <div class="flex justify-center gap-2 mt-2 text-gray-400">
-               <span class="text-[10px] bg-gray-800/50 px-1.5 py-0.5 rounded border border-gray-700/50 hover:border-gray-500 transition-colors">Laravel</span>
-               <span class="text-[10px] bg-gray-800/50 px-1.5 py-0.5 rounded border border-gray-700/50 hover:border-gray-500 transition-colors">React</span>
-               <span class="text-[10px] bg-gray-800/50 px-1.5 py-0.5 rounded border border-gray-700/50 hover:border-gray-500 transition-colors">Python</span>
-            </div>
-          </div>
-          
-          {{-- Footer: QR & Barcode --}}
-          <div class="mt-auto flex justify-between items-end border-t border-gray-700/50 pt-4">
-            {{-- Barcode Simulation --}}
-            <div class="flex gap-0.5 h-8 opacity-50">
-              <div class="w-1 bg-white h-full"></div>
-              <div class="w-0.5 bg-white h-full"></div>
-              <div class="w-1.5 bg-white h-full"></div>
-              <div class="w-0.5 bg-white h-full"></div>
-              <div class="w-1 bg-white h-full"></div>
-              <div class="w-0.5 bg-white h-full"></div>
-              <div class="w-1.5 bg-white h-full"></div>
-              <div class="w-1 bg-white h-full"></div>
-              <div class="w-0.5 bg-white h-full"></div>
-              <div class="w-1 bg-white h-full"></div>
-              <div class="w-0.5 bg-white h-full"></div>
-              <div class="w-1.5 bg-white h-full"></div>
-            </div>
-            {{-- QR Code --}}
-            <div class="w-10 h-10 bg-white p-0.5 rounded-md group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-300">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/charlie22-dev" alt="QR" class="w-full h-full opacity-90 group-hover:opacity-100">
-            </div>
+        {{-- Top Section --}}
+        <div class="z-10">
+          <svg class="w-8 h-8 text-white mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4 17l6-6-6-6M12 19h8"/></svg>
+          <h3 class="text-base font-bold text-white tracking-wide uppercase mb-1">Charlie Mer Libatod</h3>
+          <p class="text-[10px] text-gray-500 font-mono tracking-widest uppercase">Access Card</p>
+        </div>
+
+        {{-- Middle Section --}}
+        <div class="z-10 mt-auto mb-10">
+          <p class="text-[10px] text-gray-500 font-mono tracking-widest uppercase mb-1.5">Role</p>
+          <p class="text-xl font-bold text-white uppercase tracking-widest">Full Stack</p>
+        </div>
+
+        {{-- Bottom Section --}}
+        <div class="z-10 flex justify-between items-end">
+          <p class="text-[10px] text-gray-500 font-mono tracking-widest uppercase mb-1">Developer</p>
+          {{-- QR Code --}}
+          <div class="w-12 h-12 transition-all duration-300 opacity-60 group-hover:opacity-100 group-hover:scale-105">
+             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/charlie22-dev" class="w-full h-full invert mix-blend-screen" alt="QR">
           </div>
         </div>
 
         <div id="cardShine" class="absolute inset-0 rounded-2xl pointer-events-none opacity-0 transition-opacity duration-200 z-20"
-          style="background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), transparent 60%);">
+          style="background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06), transparent 60%);">
         </div>
       </div>
     </div>
@@ -189,10 +147,10 @@
             </div>
             <div>
               <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ $item[1] }}</p>
-              <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{{ $item[2] }}</p>
+              <p class="text-sm text-gray-700 dark:text-gray-400 mt-0.5">{{ $item[2] }}</p>
             </div>
           </div>
-          <span class="text-xs text-gray-400 dark:text-gray-500 shrink-0 ml-4 mt-1">{{ $item[0] }}</span>
+          <span class="text-sm text-gray-800 dark:text-gray-500 shrink-0 ml-4 mt-1 font-medium">{{ $item[0] }}</span>
         </div>
         @endforeach
       </div>
@@ -244,7 +202,7 @@
         <a href="{{ $cert[2] }}" class="flex items-center justify-between border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition group">
           <div>
             <p class="text-sm font-bold text-gray-900 dark:text-white">{{ $cert[0] }}</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{{ $cert[1] }}</p>
+            <p class="text-sm text-gray-800 dark:text-gray-400 mt-0.5">{{ $cert[1] }}</p>
           </div>
           <span class="text-gray-400 text-lg ml-4 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
         </a>
@@ -279,9 +237,9 @@
           @endphp
           @foreach (array_merge($recos, $recos) as $reco)
           <div class="border border-gray-200 dark:border-gray-700 rounded-2xl p-4">
-            <p class="text-sm text-gray-600 dark:text-gray-400 leading-[1.85] mb-3">"{{ $reco[0] }}"</p>
+            <p class="text-sm text-gray-900 dark:text-gray-400 leading-[1.85] mb-3 font-medium">"{{ $reco[0] }}"</p>
             <p class="text-sm font-semibold text-black dark:text-white">{{ $reco[1] }}</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{{ $reco[2] }}</p>
+            <p class="text-sm text-gray-700 dark:text-gray-400 mt-0.5">{{ $reco[2] }}</p>
           </div>
           @endforeach
         </div>
