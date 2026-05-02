@@ -11,6 +11,10 @@ Route::get('/tech-stack', function () {
     return view('sections.techstack');
 });
 
+Route::get('/projects', function () {
+    return view('sections.projects');
+});
+
 Route::get('/contact', function () {
     return view('sections.contact');
 });

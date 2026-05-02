@@ -168,10 +168,11 @@
     <div id="projects">
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">Recent Projects</h2>
-        <a href="https://github.com/charlie22-dev" target="_blank" class="text-xs text-gray-500 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 hover:bg-gray-50 dark:hover:bg-gray-800 transition flex items-center gap-1">View All →</a>
+        <a href="/projects" class="text-xs text-gray-500 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 hover:bg-gray-50 dark:hover:bg-gray-800 transition flex items-center gap-1">View All →</a>
       </div>
       <div class="flex flex-col gap-2">
         @foreach ([
+          ["Mimalicious", 'A premium business delivery website.', 'charlie22-dev.github.io', 'https://charlie22-dev.github.io/newproflect/'],
           ["Tipid Tracker", 'A comprehensive budget manager web application.', 'charlie22.pythonanywhere.com', 'https://charlie22.pythonanywhere.com/'],
           ["Charlie's Portfolio", 'Personal portfolio website built with Laravel and Tailwind CSS', 'chaportfolio.onrender.com', 'https://chaportfolio-1.onrender.com/'],
           ['Appreciation Letter','A calendar-based appreciation letter web app', 'github.com/charlie22-dev', 'https://charlie22-dev.github.io/appreciation-letterv2/'],
