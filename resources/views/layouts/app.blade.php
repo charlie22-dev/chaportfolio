@@ -47,7 +47,12 @@
 .animate-fade-in {
   animation: fadeIn 0.3s ease forwards;
 }
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
   </style>
+  @stack('head')
 </head>
 <body class="bg-white dark:bg-[#0f1117] text-black dark:text-white antialiased transition-colors duration-200">
 

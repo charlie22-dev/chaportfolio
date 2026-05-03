@@ -170,20 +170,38 @@
         <h2 class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">Recent Projects</h2>
         <a href="/projects" class="text-xs text-gray-500 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 hover:bg-gray-50 dark:hover:bg-gray-800 transition flex items-center gap-1">View All →</a>
       </div>
-      <div class="flex flex-col gap-2">
-        @foreach ([
-          ["Mimalicious", 'A premium business delivery website.', 'charlie22-dev.github.io', 'https://charlie22-dev.github.io/newproflect/'],
-          ["Tipid Tracker", 'A comprehensive budget manager web application.', 'charlie22.pythonanywhere.com', 'https://charlie22.pythonanywhere.com/'],
-          ["Charlie's Portfolio", 'Personal portfolio website built with Laravel and Tailwind CSS', 'chaportfolio.onrender.com', 'https://chaportfolio-1.onrender.com/'],
-          ['Appreciation Letter','A calendar-based appreciation letter web app', 'github.com/charlie22-dev', 'https://charlie22-dev.github.io/appreciation-letterv2/'],
-        ] as $project)
-        <a href="{{ $project[3] }}" target="_blank" class="flex items-start justify-between border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition group">
-          <div>
-            <p class="text-sm font-bold text-gray-900 dark:text-white">{{ $project[0] }}</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{{ $project[1] }}</p>
-            <span class="inline-block mt-2 text-[11px] text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-md">{{ $project[2] }}</span>
-          </div>
-          <span class="text-gray-400 text-lg ml-4 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+      <div class="flex flex-col" style="gap:0;">
+        @php
+        $homeProjects = [
+          ['Mimalicious',         'High-end burger restaurant website.',            'charlie22-dev.github.io',     'https://charlie22-dev.github.io/newproflect/'],
+          ['Tipid Tracker',       'Budget manager built with Python Flask.',        'charlie22.pythonanywhere.com', 'https://charlie22.pythonanywhere.com/'],
+          ["Charlie's Portfolio", 'Portfolio built with Laravel and Tailwind.',     'chaportfolio.onrender.com',   'https://chaportfolio-1.onrender.com/'],
+          ['Appreciation Letter', 'Calendar-based letter app built with React.',    'charlie22-dev.github.io',     'https://charlie22-dev.github.io/appreciation-letterv2/'],
+        ];
+        @endphp
+        @foreach ($homeProjects as $hi => $project)
+        @php
+        $enc = urlencode($project[3]);
+        $thumb = "https://api.microlink.io/?url={$enc}&screenshot=true&meta=false&embed=screenshot.url";
+        @endphp
+        <a href="{{ $project[3] }}" target="_blank"
+           class="hp-proj-row flex items-center justify-between py-3 group relative"
+           style="border-bottom:1px solid #e5e7eb;"
+           data-thumb="{{ $thumb }}">
+          <span class="text-[10px] font-mono text-gray-300 dark:text-gray-700 w-5 shrink-0">{{ str_pad($hi+1,2,'0',STR_PAD_LEFT) }}</span>
+          <span class="flex-1 min-w-0 ml-3">
+            <span class="block text-sm font-bold text-gray-900 dark:text-white transition-transform duration-200 group-hover:translate-x-1">{{ $project[0] }}</span>
+            <span class="block text-xs text-gray-500 dark:text-gray-500 mt-0.5">{{ $project[1] }}</span>
+          </span>
+          {{-- Inline preview bubble --}}
+          <span class="hp-thumb-wrap" aria-hidden="true"
+            style="width:110px;height:72px;border-radius:8px;overflow:hidden;flex-shrink:0;margin:0 10px;
+                   opacity:0;transform:scale(0.92);transition:opacity 0.25s cubic-bezier(0.23,1,0.32,1),transform 0.25s cubic-bezier(0.23,1,0.32,1);
+                   background:#0f172a;border:1px solid rgba(0,0,0,0.08);position:relative;">
+            <span style="position:absolute;inset:0;background:linear-gradient(90deg,#1e293b,#263548 40%,#1e293b);background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite;" class="hp-skel"></span>
+            <img data-src="{{ $thumb }}" alt="" src="" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;opacity:0;transition:opacity 0.3s ease;position:relative;z-index:1;" class="hp-img" />
+          </span>
+          <span class="text-gray-300 dark:text-gray-700 group-hover:text-gray-500 dark:group-hover:text-gray-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-base">↗</span>
         </a>
         @endforeach
       </div>
@@ -478,5 +496,33 @@
       </div>`;
     messages.scrollTop = messages.scrollHeight;
   }
+  // Homepage project hover previews
+  document.querySelectorAll('.hp-proj-row').forEach(row => {
+    const wrap = row.querySelector('.hp-thumb-wrap');
+    const img  = row.querySelector('.hp-img');
+    const skel = row.querySelector('.hp-skel');
+    let loaded = false;
+
+    row.addEventListener('mouseenter', () => {
+      wrap.style.opacity = '1';
+      wrap.style.transform = 'scale(1)';
+      if (!loaded) {
+        loaded = true;
+        img.src = img.dataset.src;
+        img.onload  = () => { img.style.opacity = '1'; if(skel) skel.style.display='none'; };
+        img.onerror = () => { if(skel) skel.style.display='none'; };
+      }
+    });
+    row.addEventListener('mouseleave', () => {
+      wrap.style.opacity = '0';
+      wrap.style.transform = 'scale(0.92)';
+    });
+
+    // Apply dark border
+    const html = document.getElementById('html-root');
+    if (html.classList.contains('dark')) {
+      row.style.borderBottomColor = '#1f2937';
+    }
+  });
 </script>
 @endpush
