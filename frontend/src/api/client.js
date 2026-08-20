@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+// When deployed on Vercel, it calls the Vercel serverless function /api/chat
+// In local development, if VITE_API_BASE_URL is set (e.g. to http://localhost:8000/api), it uses that.
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -12,7 +14,7 @@ const apiClient = axios.create({
 });
 
 /**
- * Send a chat message to the Laravel/Groq backend.
+ * Send a chat message to the Groq AI backend (Vercel Serverless or Laravel).
  * @param {string} message  - The current user message
  * @param {Array}  history  - Array of {role, content} prior turns (optional)
  */
