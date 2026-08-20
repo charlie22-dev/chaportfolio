@@ -17,7 +17,7 @@ const techData = [
     icon: '⚛️',
     color: '#00d8ff',
     desc: 'Component architecture, custom hooks, state management, Vite, and Next.js SPA/SSR applications.',
-    projects: ['Appreciation Letter', 'Portfolio UI System']
+    projects: ['Sky Cast', 'Appreciation Letter', 'Portfolio UI System']
   },
   {
     name: 'PHP & Laravel',
@@ -47,7 +47,7 @@ const techData = [
     icon: '⚡',
     color: '#f7df1e',
     desc: 'Asynchronous programming, DOM manipulation, Web Audio API, GSAP animations, and event-driven architectures.',
-    projects: ['Mimalicious', 'Audio SFX Engine', 'Interactive Wheel']
+    projects: ['Sky Cast', 'Mimalicious', 'Audio SFX Engine']
   },
   {
     name: 'Tailwind CSS',

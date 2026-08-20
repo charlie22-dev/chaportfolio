@@ -177,6 +177,7 @@
           ['Tipid Tracker',       'Budget manager built with Python Flask.',        'charlie22.pythonanywhere.com', 'https://charlie22.pythonanywhere.com/'],
           ["Charlie's Portfolio", 'Portfolio built with Laravel and Tailwind.',     'chaportfolio.onrender.com',   'https://chaportfolio-1.onrender.com/'],
           ['Appreciation Letter', 'Calendar-based letter app built with React.',    'charlie22-dev.github.io',     'https://charlie22-dev.github.io/appreciation-letterv2/'],
+          ['Sky Cast',            'Real-time weather forecast & analytics app.',     'charlie22-dev.github.io',     'https://charlie22-dev.github.io/weather_app/'],
         ];
         @endphp
         @foreach ($homeProjects as $hi => $project)

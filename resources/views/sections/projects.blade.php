@@ -409,6 +409,7 @@
         ['name' => "Charlie's Portfolio", 'desc' => 'Portfolio built with Laravel and Tailwind CSS.', 'host' => 'chaportfolio.onrender.com', 'url' => 'https://chaportfolio-1.onrender.com/', 'tags' => ['Laravel', 'Tailwind', 'PHP']],
         ['name' => 'Appreciation Letter', 'desc' => 'Calendar-based letter app built with React.', 'host' => 'charlie22-dev.github.io', 'url' => 'https://charlie22-dev.github.io/appreciation-letterv2/', 'tags' => ['React', 'JavaScript']],
         ['name' => 'Task Manager App', 'desc' => 'Full-stack task tracker with priority levels.', 'host' => 'taskmanagerapp.up.railway.app', 'url' => 'https://taskmanagerapp-production-234.up.railway.app', 'tags' => ['Laravel', 'MySQL', 'PHP']],
+        ['name' => 'Sky Cast', 'desc' => 'Real-time weather forecast & atmospheric analytics app.', 'host' => 'charlie22-dev.github.io', 'url' => 'https://charlie22-dev.github.io/weather_app/', 'tags' => ['React', 'Tailwind', 'Weather API']],
       ];
     @endphp
 

@@ -53,7 +53,8 @@ Projects:
 3. Tipid Tracker — Python Flask + MySQL expense and savings analytics dashboard.
 4. Mimalicious Burger House — Interactive frontend ordering and menu experience app.
 5. Appreciation Letter Calendar — React.js interactive calendar-based creative messaging app.
-6. REST API & Microservices Engine — JWT bearer authentication microservices backend system.
+6. Sky Cast — Modern real-time weather forecast application (https://charlie22-dev.github.io/weather_app/) featuring global city search, live atmospheric metrics, hourly and 7-day forecasts.
+7. REST API & Microservices Engine — JWT bearer authentication microservices backend system.
 
 Contact:
 - GitHub: https://github.com/charlie22-dev

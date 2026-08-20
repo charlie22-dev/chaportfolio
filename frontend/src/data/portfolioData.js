@@ -83,6 +83,14 @@ export const projectsList = [
     host: 'taskmanagerapp.up.railway.app',
     url: 'https://taskmanagerapp-production-234.up.railway.app',
     tags: ['Laravel', 'MySQL', 'PHP']
+  },
+  {
+    name: 'Sky Cast',
+    desc: 'Real-time weather forecast web app.',
+    fullDesc: 'Modern weather forecast web application featuring real-time meteorological data, hourly forecasts, 7-day outlook, and global city search.',
+    host: 'charlie22-dev.github.io',
+    url: 'https://charlie22-dev.github.io/weather_app/',
+    tags: ['React', 'Tailwind CSS', 'Weather API', 'JavaScript']
   }
 ];
 

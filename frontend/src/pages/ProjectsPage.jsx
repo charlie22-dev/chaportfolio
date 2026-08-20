@@ -223,6 +223,42 @@ const fullStackProjects = [
         </div>
       </div>
     )
+  },
+  {
+    id: 'sky-cast',
+    category: 'frontend',
+    title: 'SKY CAST WEATHER',
+    subtitle: 'GLOBAL WEATHER & FORECAST SPA',
+    tech: ['React.js', 'Tailwind CSS', 'Weather API', 'Geolocation'],
+    year: '2026',
+    url: 'https://charlie22-dev.github.io/weather_app/',
+    host: 'charlie22-dev.github.io',
+    type: 'webapp',
+    desc: 'Sleek weather application featuring global location search, real-time temperature, atmospheric metrics, and dynamic hourly/7-day forecasts.',
+    renderGraphic: () => (
+      <div className="w-full h-full p-5 flex flex-col justify-between relative overflow-hidden bg-[#071726] text-[#fcfff7] rounded-lg border-2 border-[#00d2ff]">
+        <div className="flex justify-between items-center z-10">
+          <span className="font-silkscreen text-xs text-[#00d2ff] font-bold">WEATHER SPA</span>
+          <span className="bg-[#00d2ff] text-black font-silkscreen text-[9px] px-2 py-0.5 rounded font-bold">LIVE APP ↗</span>
+        </div>
+
+        <div className="my-auto text-center space-y-3 z-10">
+          <div className="text-5xl sm:text-6xl drop-shadow-[0_0_25px_#00d2ff]">🌤️</div>
+          <h3 className="font-silkscreen text-xl sm:text-2xl font-bold text-[#00d2ff] tracking-wider">
+            SKY CAST
+          </h3>
+          <div className="bg-black/60 p-2.5 rounded border border-white/10 text-left font-mono text-[10px] text-white/80 space-y-0.5">
+            <p><span className="text-[#c2ff01]">const</span> forecast = <span className="text-[#00d2ff]">await</span> fetchWeather(city);</p>
+            <p className="text-white/50">// 7-day outlook &amp; live metrics</p>
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center text-[10px] font-mono text-white/50 border-t border-white/10 pt-2 z-10">
+          <span>GITHUB PAGES</span>
+          <span className="text-[#00d2ff] font-bold">LAUNCH APP →</span>
+        </div>
+      </div>
+    )
   }
 ];
 

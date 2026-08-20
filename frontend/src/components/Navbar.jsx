@@ -31,9 +31,8 @@ export default function Navbar() {
             to="/"
             onClick={() => sound.playClick()}
             onMouseEnter={() => sound.playHover()}
-            className={`transition-opacity hover:opacity-75 ${
-              location.pathname === '/' ? 'text-[#c2ff01] font-bold' : 'text-[#c2ff01]'
-            }`}
+            className={`transition-opacity hover:opacity-75 ${location.pathname === '/' ? 'text-[#c2ff01] font-bold' : 'text-[#c2ff01]'
+              }`}
           >
             HOME
           </Link>
@@ -41,9 +40,8 @@ export default function Navbar() {
             to="/projects"
             onClick={() => sound.playClick()}
             onMouseEnter={() => sound.playHover()}
-            className={`transition-opacity hover:opacity-75 ${
-              location.pathname === '/projects' ? 'text-[#c2ff01] font-bold' : 'text-[#c2ff01]'
-            }`}
+            className={`transition-opacity hover:opacity-75 ${location.pathname === '/projects' ? 'text-[#c2ff01] font-bold' : 'text-[#c2ff01]'
+              }`}
           >
             WORKS
           </Link>
@@ -51,9 +49,8 @@ export default function Navbar() {
             to="/contact"
             onClick={() => sound.playClick()}
             onMouseEnter={() => sound.playHover()}
-            className={`transition-opacity hover:opacity-75 ${
-              location.pathname === '/contact' ? 'text-[#c2ff01] font-bold' : 'text-[#c2ff01]'
-            }`}
+            className={`transition-opacity hover:opacity-75 ${location.pathname === '/contact' ? 'text-[#c2ff01] font-bold' : 'text-[#c2ff01]'
+              }`}
           >
             CONTACT
           </Link>

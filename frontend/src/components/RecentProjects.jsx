@@ -103,6 +103,26 @@ const projects = [
       'Neo-Brutalist & Cyber Design System Tokens',
       'Full-Stack Architecture with PHP / Laravel API'
     ]
+  },
+  {
+    id: 'sky-cast',
+    index: '06',
+    label: '06 · SKY CAST',
+    title: 'SKY CAST',
+    category: 'WEATHER & FORECAST SPA',
+    tagline: 'Real-time weather tracking & atmospheric analytics web app',
+    desc: 'Interactive weather forecast web application delivering live meteorological data, hourly updates, 7-day extended forecast outlook, and global city search.',
+    url: 'https://charlie22-dev.github.io/weather_app/',
+    host: 'charlie22-dev.github.io/weather_app',
+    tags: ['React.js', 'Tailwind CSS', 'Weather API', 'JavaScript'],
+    accent: '#00d2ff',
+    image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=1200&q=80',
+    features: [
+      'Live Real-Time Conditions & Atmospheric Metrics',
+      'Interactive Hourly & 7-Day Extended Forecasts',
+      'Worldwide City Search & Instant Weather Discovery',
+      'Dynamic Responsive Design with Atmospheric Theme'
+    ]
   }
 ];
 
@@ -179,7 +199,7 @@ export default function RecentProjects() {
                 {activeProject.category}
               </span>
               <span className="font-silkscreen text-xs text-[#c2ff01] font-bold">
-                PROJECT [{activeProject.index} / 05]
+                PROJECT [{activeProject.index} / {String(projects.length).padStart(2, '0')}]
               </span>
             </div>
 
