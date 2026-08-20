@@ -1,0 +1,128 @@
+#infinite-grid-menu-canvas {
+  cursor: grab;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+  touch-action: none;
+}
+
+#infinite-grid-menu-canvas:active {
+  cursor: grabbing;
+}
+
+.action-button {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  background: #c2ff01;
+  border: 3px solid #0a0a0a;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(194, 255, 1, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.action-button:hover {
+  background: #fff;
+  transform: translateX(-50%) scale(1.1);
+}
+
+.action-button-icon {
+  user-select: none;
+  position: relative;
+  color: #0a0a0a;
+  top: 1px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.face-title {
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(0, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.face-title.active {
+  opacity: 1;
+  transform: translate(0, -50%);
+  pointer-events: auto;
+  transition: 0.4s ease;
+}
+
+.face-title.inactive {
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-20px, -50%);
+  transition: 0.15s ease;
+}
+
+.face-description {
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translate(0, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.face-description.active {
+  opacity: 1;
+  transform: translate(0, -50%);
+  pointer-events: auto;
+  transition: 0.4s ease;
+}
+
+.face-description.inactive {
+  pointer-events: none;
+  transform: translate(20px, -50%);
+  opacity: 0;
+  transition: 0.15s ease;
+}
+
+.action-button.active {
+  bottom: 2em;
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.4s ease;
+}
+
+.action-button.inactive {
+  bottom: -60px;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.15s ease;
+}
+
+@media (max-width: 640px) {
+  .face-title {
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+  }
+  .face-title.active {
+    transform: translate(-50%, 0);
+  }
+  .face-description {
+    top: auto;
+    bottom: 5.5em;
+    right: 50%;
+    transform: translate(50%, 0);
+  }
+  .face-description.active {
+    transform: translate(50%, 0);
+  }
+}

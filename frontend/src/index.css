@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a0a;
+  --lime: #c2ff01;
+  --blue: #0044ff;
+  --orange: #ff4502;
+  --cream: #fcfff7;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--cream);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--lime);
+    color: #0a0a0a;
+  }
+}
+
+/* Custom font utilities */
+.font-silkscreen {
+  font-family: 'Silkscreen', monospace;
+}
+
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-roboto-flex {
+  font-family: 'Roboto Flex', sans-serif;
+}
+
+/* Ticker scroll animation */
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: tickerScroll 20s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Vertical recommendation scroll */
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scroll-y {
+  animation: scrollUp 32s linear infinite;
+}
+
+.animate-scroll-y:hover {
+  animation-play-state: paused;
+}
+
+/* Neon Glows */
+.text-glow-lime {
+  text-shadow:
+    0 0 6px var(--lime),
+    0 0 18px var(--lime),
+    0 0 40px rgba(194, 255, 1, 0.6);
+}
+
+.text-glow-orange {
+  text-shadow:
+    0 0 6px var(--orange),
+    0 0 16px rgba(255, 69, 2, 0.5);
+}
+
+.box-glow-lime {
+  box-shadow: 0 0 20px rgba(194, 255, 1, 0.35);
+}
+
+.box-glow-blue {
+  box-shadow: 0 0 30px rgba(0, 68, 255, 0.4);
+}
+
+/* Neo-brutalist tactile button */
+.btn-brutalist {
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s ease;
+}
+
+.btn-brutalist:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px rgba(194, 255, 1, 1);
+}
+
+.btn-brutalist:active {
+  transform: translate(0px, 0px);
+  box-shadow: 0px 0px 0px transparent;
+}
+
+.btn-brutalist-orange:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px rgba(255, 69, 2, 1);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lime);
+}
