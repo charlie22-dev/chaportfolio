@@ -14,19 +14,19 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-full bg-transparent px-8 sm:px-16 pt-8 pb-4 flex items-center justify-between z-40 relative select-none">
+      <nav className="w-full bg-transparent px-4 sm:px-8 md:px-16 pt-5 sm:pt-8 pb-3 sm:pb-4 flex items-center justify-between z-40 relative select-none">
         {/* Left: '...' menu trigger button just like in reference */}
         <button
           onClick={handleOpenDrawer}
           onMouseEnter={() => sound.playHover()}
-          className="text-[#c2ff01] font-silkscreen font-bold text-2xl tracking-[6px] hover:opacity-80 transition-all cursor-pointer bg-transparent border-none p-0 outline-none"
+          className="text-[#c2ff01] font-silkscreen font-bold text-xl sm:text-2xl tracking-[4px] sm:tracking-[6px] hover:opacity-80 transition-all cursor-pointer bg-transparent border-none p-1 outline-none touch-manipulation"
           title="Open Menu"
         >
           ...
         </button>
 
         {/* Right: Only 3 links (HOME, WORKS, CONTACT) */}
-        <div className="flex items-center gap-8 sm:gap-12 font-silkscreen text-xs sm:text-sm tracking-widest">
+        <div className="flex items-center gap-4 sm:gap-8 md:gap-12 font-silkscreen text-[11px] sm:text-xs md:text-sm tracking-wider sm:tracking-widest">
           <Link
             to="/"
             onClick={() => sound.playClick()}

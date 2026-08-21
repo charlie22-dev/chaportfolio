@@ -190,24 +190,24 @@ export default function RecentProjects() {
       </div>
 
       {/* Active Project Details Card */}
-      <div className="w-full rounded-3xl bg-[#080808] border-3 border-[#222] hover:border-[#c2ff01] p-6 sm:p-8 lg:p-10 transition-colors shadow-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-center">
+      <div className="w-full rounded-2xl sm:rounded-3xl bg-[#080808] border-2 sm:border-3 border-[#222] hover:border-[#c2ff01] p-5 sm:p-8 lg:p-10 transition-colors shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-6 sm:gap-8 items-center">
           {/* Left Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="font-silkscreen text-xs font-bold bg-[#ff4502] text-white px-3.5 py-1 rounded-md shadow">
+            <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+              <span className="font-silkscreen text-[10px] sm:text-xs font-bold bg-[#ff4502] text-white px-3 py-1 rounded-md shadow">
                 {activeProject.category}
               </span>
-              <span className="font-silkscreen text-xs text-[#c2ff01] font-bold">
+              <span className="font-silkscreen text-[10px] sm:text-xs text-[#c2ff01] font-bold">
                 PROJECT [{activeProject.index} / {String(projects.length).padStart(2, '0')}]
               </span>
             </div>
 
             <div>
-              <h3 className="font-space font-black text-3xl sm:text-4xl text-[#fcfff7] tracking-tight">
+              <h3 className="font-space font-black text-2xl sm:text-4xl text-[#fcfff7] tracking-tight">
                 {activeProject.title}
               </h3>
-              <p className="font-space font-bold text-sm sm:text-base text-[#c2ff01] mt-1">
+              <p className="font-space font-bold text-xs sm:text-base text-[#c2ff01] mt-1">
                 {activeProject.tagline}
               </p>
             </div>

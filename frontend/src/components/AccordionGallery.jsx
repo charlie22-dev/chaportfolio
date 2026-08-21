@@ -209,6 +209,7 @@ const AccordionGallery = ({
             rel={item.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
             onClick={e => handleClick(i, e)}
             onMouseEnter={() => handleEnter(i)}
+            onTouchStart={() => setActive(i)}
             onFocus={() => setActive(i)}
             onKeyDown={e => handleKeyDown(i, e)}
             role="listitem"

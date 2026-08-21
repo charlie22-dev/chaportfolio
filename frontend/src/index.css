@@ -9,8 +9,16 @@
 }
 
 @layer base {
-  * {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -18,6 +26,9 @@
     color: var(--cream);
     font-family: 'Space Grotesk', sans-serif;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
   }
 
   ::selection {

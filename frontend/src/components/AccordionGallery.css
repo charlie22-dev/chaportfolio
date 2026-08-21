@@ -132,15 +132,31 @@
   .accordion-gallery {
     flex-direction: column;
     perspective: none;
-    height: auto !important;
+    height: 440px !important;
   }
   .ag-panel {
-    min-height: 120px;
+    min-height: 48px;
     transform: none !important;
+  }
+  .ag-panel--active {
+    min-height: 160px;
   }
   .accordion-gallery .ag-panel__media {
     width: 100%;
-    height: var(--ag-media-size);
+    height: 100%;
+  }
+  .ag-panel__label {
+    left: 14px;
+    bottom: 14px;
+    right: 14px;
+    gap: 8px;
+  }
+  .ag-panel__bar {
+    height: 20px;
+    width: 3px;
+  }
+  .ag-panel__text {
+    font-size: 1rem;
   }
 }
 

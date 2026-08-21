@@ -49,12 +49,12 @@ export default function QuickMenuDrawer({ isOpen, onClose }) {
       />
 
       {/* Slide-out Drawer Panel */}
-      <div className="relative w-full max-w-lg bg-[#050505] border-l-2 border-[#c2ff01]/40 h-full flex flex-col justify-between p-6 sm:p-10 shadow-2xl z-10 overflow-y-auto">
+      <div className="relative w-full max-w-full sm:max-w-lg bg-[#050505] border-l-2 border-[#c2ff01]/40 h-full flex flex-col justify-between p-5 sm:p-10 shadow-2xl z-10 overflow-y-auto">
         {/* Top Header */}
-        <div className="flex items-center justify-between border-b border-[#222] pb-6">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between border-b border-[#222] pb-5 sm:pb-6">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-[#c2ff01] animate-ping" />
-            <span className="font-silkscreen text-xs text-[#c2ff01] tracking-widest font-bold">
+            <span className="font-silkscreen text-[11px] sm:text-xs text-[#c2ff01] tracking-wider sm:tracking-widest font-bold">
               SYS.MENU // {time}
             </span>
           </div>

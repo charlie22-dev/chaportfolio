@@ -177,24 +177,24 @@ export default function TechStackPage() {
       />
 
       {/* ── MASSIVE ORANGE DISPLAY BANNER ────────────────────── */}
-      <section className="w-full bg-[#ff4502] text-[#fcfff7] py-12 px-6 sm:px-12 lg:px-20 border-b-4 border-[#0a0a0a]">
+      <section className="w-full bg-[#ff4502] text-[#fcfff7] py-8 sm:py-12 px-4 sm:px-12 lg:px-20 border-b-4 border-[#0a0a0a]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <span className="font-silkscreen text-xs text-black font-bold tracking-[3px] uppercase block mb-1">
+            <span className="font-silkscreen text-[10px] sm:text-xs text-black font-bold tracking-[2px] sm:tracking-[3px] uppercase block mb-1">
               // DEVELOPER MATRIX
             </span>
-            <h1 className="font-space font-black text-3xl sm:text-5xl uppercase tracking-tight text-white leading-none">
+            <h1 className="font-space font-black text-2xl xs:text-3xl sm:text-5xl uppercase tracking-tight text-white leading-none break-words">
               TECH STACK &amp; PROFILE
             </h1>
-            <p className="font-silkscreen text-xs text-white/80 mt-2 tracking-widest uppercase">
+            <p className="font-silkscreen text-[10px] sm:text-xs text-white/80 mt-2 tracking-wider sm:tracking-widest uppercase">
               INTERACTIVE TOOL WHEEL (LEFT) &amp; 3D PROFILE HOLOCARD (RIGHT)
             </p>
           </div>
 
-          <div className="flex gap-2 font-silkscreen text-xs">
+          <div className="flex flex-wrap gap-2 font-silkscreen text-[10px] sm:text-xs">
             <button
               onClick={() => handleFilterChange('all')}
-              className={`px-4 py-2 rounded-lg font-bold border-2 transition-all ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold border-2 transition-all ${
                 filterMode === 'all'
                   ? 'bg-[#c2ff01] text-black border-[#0a0a0a] shadow-md'
                   : 'bg-black/30 text-white border-white/30 hover:border-white'
@@ -204,7 +204,7 @@ export default function TechStackPage() {
             </button>
             <button
               onClick={() => handleFilterChange('learned')}
-              className={`px-4 py-2 rounded-lg font-bold border-2 transition-all ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold border-2 transition-all ${
                 filterMode === 'learned'
                   ? 'bg-[#c2ff01] text-black border-[#0a0a0a] shadow-md'
                   : 'bg-black/30 text-white border-white/30 hover:border-white'
@@ -214,7 +214,7 @@ export default function TechStackPage() {
             </button>
             <button
               onClick={() => handleFilterChange('learning')}
-              className={`px-4 py-2 rounded-lg font-bold border-2 transition-all ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold border-2 transition-all ${
                 filterMode === 'learning'
                   ? 'bg-[#c2ff01] text-black border-[#0a0a0a] shadow-md'
                   : 'bg-black/30 text-white border-white/30 hover:border-white'
@@ -227,14 +227,14 @@ export default function TechStackPage() {
       </section>
 
       {/* ── TWO COLUMN MAIN INTERFACE ────────────────────────── */}
-      <main className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[580px]">
+      <main className="max-w-7xl mx-auto px-4 sm:px-12 lg:px-16 py-10 sm:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[500px]">
 
           {/* ── LEFT COLUMN: INTERACTIVE OPTION WHEEL & TECH DETAIL (7 Cols) ─ */}
-          <div className="lg:col-span-7 flex flex-col justify-between h-full space-y-8">
+          <div className="lg:col-span-7 flex flex-col justify-between h-full space-y-6 sm:space-y-8">
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="font-silkscreen text-xs text-[#c2ff01] tracking-[3px] uppercase">
+                <span className="font-silkscreen text-[10px] sm:text-xs text-[#c2ff01] tracking-[2px] sm:tracking-[3px] uppercase">
                   ◄ SCROLL / DRAG WHEEL TO EXPLORE ►
                 </span>
                 <span className="font-mono text-xs text-white/50">
@@ -243,13 +243,13 @@ export default function TechStackPage() {
               </div>
 
               {/* OptionWheel Container */}
-              <div className="h-[280px] sm:h-[320px] bg-[#070707] border-2 border-[#1c1c1c] rounded-2xl relative overflow-hidden shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
+              <div className="h-[250px] sm:h-[320px] bg-[#070707] border-2 border-[#1c1c1c] rounded-2xl relative overflow-hidden shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
                 {/* Cyber grid backdrop */}
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#c2ff01_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
                 {/* Center marker beam */}
-                <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-14 bg-[#c2ff01]/5 border-y border-[#c2ff01]/30 pointer-events-none z-0" />
-                <div className="absolute top-1/2 left-3 -translate-y-1/2 font-silkscreen text-sm text-[#c2ff01] font-bold pointer-events-none z-10">
+                <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-12 sm:h-14 bg-[#c2ff01]/5 border-y border-[#c2ff01]/30 pointer-events-none z-0" />
+                <div className="absolute top-1/2 left-2 sm:left-3 -translate-y-1/2 font-silkscreen text-xs sm:text-sm text-[#c2ff01] font-bold pointer-events-none z-10">
                   ►
                 </div>
 
@@ -260,14 +260,14 @@ export default function TechStackPage() {
                   textColor="#444444"
                   activeColor="#c2ff01"
                   side="left"
-                  fontSize={1.8}
+                  fontSize={typeof window !== 'undefined' && window.innerWidth < 640 ? 1.3 : 1.8}
                   spacing={1.3}
                   curve={1.2}
                   tilt={8}
                   blur={1.5}
                   fade={0.28}
                   smoothing={180}
-                  inset={35}
+                  inset={typeof window !== 'undefined' && window.innerWidth < 640 ? 20 : 35}
                   loop={false}
                   draggable={true}
                   onChange={handleWheelChange}
@@ -276,13 +276,13 @@ export default function TechStackPage() {
             </div>
 
             {/* Selected Item Detail Panel */}
-            <div className="bg-[#0c0c0c] border-2 border-[#ff4502] p-6 rounded-2xl relative overflow-hidden shadow-[0_0_20px_rgba(255,69,2,0.15)] transition-all">
+            <div className="bg-[#0c0c0c] border-2 border-[#ff4502] p-4 sm:p-6 rounded-2xl relative overflow-hidden shadow-[0_0_20px_rgba(255,69,2,0.15)] transition-all">
               {/* Header */}
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-3">
-                  <span className="text-3xl">{currentItem.icon}</span>
+                  <span className="text-2xl sm:text-3xl">{currentItem.icon}</span>
                   <div>
-                    <h3 className="font-silkscreen text-xl sm:text-2xl font-bold text-white tracking-wider">
+                    <h3 className="font-silkscreen text-lg sm:text-2xl font-bold text-white tracking-wider">
                       {currentItem.name}
                     </h3>
                     <span className="font-space text-xs text-[#ff4502] font-semibold">

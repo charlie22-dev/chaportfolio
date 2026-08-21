@@ -150,18 +150,18 @@ export default function ExploreCards() {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-[#000000] py-20 px-4 sm:px-8 lg:px-14 overflow-hidden select-none"
+      className="w-full bg-[#000000] py-14 sm:py-20 px-4 sm:px-8 lg:px-14 overflow-hidden select-none"
       style={{ fontFamily: "'Silkscreen', monospace" }}
     >
       {/* Section Header */}
-      <div className="text-center mb-14">
-        <p className="font-silkscreen text-xs text-[#c2ff01]/70 tracking-[0.3em] mb-3">
+      <div className="text-center mb-10 sm:mb-14 px-2">
+        <p className="font-silkscreen text-[11px] sm:text-xs text-[#c2ff01]/70 tracking-[0.25em] sm:tracking-[0.3em] mb-2 sm:mb-3">
           · · · EXPLORE · · ·
         </p>
-        <h2 className="font-silkscreen text-2xl sm:text-3xl md:text-4xl font-bold text-[#fcfff7] tracking-widest">
+        <h2 className="font-silkscreen text-xl sm:text-3xl md:text-4xl font-bold text-[#fcfff7] tracking-wider sm:tracking-widest">
           SELECT YOUR DESTINATION
         </h2>
-        <p className="font-silkscreen text-xs text-white/40 tracking-widest mt-2">
+        <p className="font-silkscreen text-[10px] sm:text-xs text-white/40 tracking-wider sm:tracking-widest mt-2">
           CLICK A CARD TO NAVIGATE
         </p>
       </div>

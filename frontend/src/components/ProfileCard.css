@@ -432,3 +432,34 @@
       center;
   }
 }
+
+@media (max-width: 480px) {
+  .pc-card-wrapper {
+    max-width: 340px;
+  }
+  .pc-card {
+    height: 480px;
+    max-height: 72svh;
+  }
+  .pc-user-info {
+    --ui-inset: 10px;
+    padding: 8px 10px;
+  }
+  .pc-mini-avatar {
+    width: 32px;
+    height: 32px;
+  }
+  .pc-handle {
+    font-size: 10px;
+  }
+  .pc-status {
+    font-size: 10px;
+  }
+  .pc-contact-btn {
+    padding: 6px 10px;
+    font-size: 9px;
+  }
+  .pc-details h3 {
+    font-size: 1.25rem;
+  }
+}

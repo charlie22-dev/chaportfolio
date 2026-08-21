@@ -87,12 +87,11 @@ export default function ChatbotDrawer() {
   };
 
   return (
-    <div className="fixed bottom-5 right-4 sm:right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-3 right-3 sm:bottom-5 sm:right-6 z-50 flex flex-col items-end gap-2.5 sm:gap-3">
 
       {/* ── CHAT WINDOW ──────────────────────────────── */}
       {isOpen && (
-        <div className="w-[92vw] sm:w-[400px] bg-[#0d0d0d] border-2 border-[#c2ff01] rounded-2xl shadow-[0_0_40px_rgba(194,255,1,0.15)] overflow-hidden flex flex-col"
-          style={{ height: '520px' }}
+        <div className="w-[calc(100vw-24px)] sm:w-[400px] max-w-[400px] bg-[#0d0d0d] border-2 border-[#c2ff01] rounded-2xl shadow-[0_0_40px_rgba(194,255,1,0.15)] overflow-hidden flex flex-col h-[min(520px,75vh)]"
         >
           {/* Header */}
           <div className="px-4 py-3 border-b border-[#1f1f1f] flex items-center justify-between bg-[#111] shrink-0">
@@ -142,7 +141,7 @@ export default function ChatbotDrawer() {
                   </div>
                 )}
                 <div
-                  className={`px-3.5 py-2.5 max-w-[80%] text-xs sm:text-[13px] leading-relaxed rounded-2xl ${
+                  className={`px-3.5 py-2.5 max-w-[85%] text-xs sm:text-[13px] leading-relaxed rounded-2xl ${
                     msg.sender === 'user'
                       ? 'bg-[#c2ff01] text-[#0a0a0a] font-semibold rounded-br-sm font-space'
                       : 'bg-[#181818] text-[#e8ffe8] border border-[#2a2a2a] rounded-bl-sm font-space'
@@ -200,7 +199,7 @@ export default function ChatbotDrawer() {
             <button
               onClick={() => sendMessage(inputValue)}
               disabled={isLoading || !inputValue.trim()}
-              className="px-4 py-2.5 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen font-bold text-[10px] rounded-xl hover:bg-white transition-all cursor-pointer disabled:opacity-40 shrink-0 tracking-wider"
+              className="px-3.5 sm:px-4 py-2.5 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen font-bold text-[10px] rounded-xl hover:bg-white transition-all cursor-pointer disabled:opacity-40 shrink-0 tracking-wider"
             >
               SEND
             </button>
@@ -212,7 +211,7 @@ export default function ChatbotDrawer() {
       <button
         onClick={() => setIsOpen(prev => !prev)}
         id="chatToggleBtn"
-        className="flex items-center gap-2.5 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen text-xs font-bold px-5 py-3.5 rounded-xl shadow-[0_0_20px_rgba(194,255,1,0.3)] border-2 border-[#0a0a0a] hover:bg-white hover:shadow-[0_0_30px_rgba(194,255,1,0.5)] transition-all cursor-pointer active:scale-95"
+        className="flex items-center gap-2.5 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen text-[11px] sm:text-xs font-bold px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl shadow-[0_0_20px_rgba(194,255,1,0.3)] border-2 border-[#0a0a0a] hover:bg-white hover:shadow-[0_0_30px_rgba(194,255,1,0.5)] transition-all cursor-pointer active:scale-95"
       >
         <span className="relative flex h-2.5 w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0044ff] opacity-75" />

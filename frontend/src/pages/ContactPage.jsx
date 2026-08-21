@@ -100,14 +100,14 @@ export default function ContactPage() {
       />
 
       {/* ── HERO HEADER ── */}
-      <section className="w-full bg-[#0a0a0a] border-b-4 border-[#1a1a1a] px-6 sm:px-12 lg:px-20 pt-16 pb-14">
+      <section className="w-full bg-[#0a0a0a] border-b-4 border-[#1a1a1a] px-4 sm:px-12 lg:px-20 pt-10 sm:pt-16 pb-8 sm:pb-14">
         <div className="max-w-7xl mx-auto">
-          <span className="font-silkscreen text-xs text-[#ff4502] tracking-[4px] uppercase mb-3 block">
-            // INQUIRIES & COLLABORATIONS
+          <span className="font-silkscreen text-[10px] sm:text-xs text-[#ff4502] tracking-[3px] sm:tracking-[4px] uppercase mb-2 sm:mb-3 block">
+            // INQUIRIES &amp; COLLABORATIONS
           </span>
 
           {/* Shuffle "GET IN TOUCH" Heading */}
-          <div className="overflow-hidden mb-6">
+          <div className="overflow-hidden mb-4 sm:mb-6">
             <Shuffle
               text="GET IN TOUCH"
               tag="h1"
@@ -123,10 +123,10 @@ export default function ContactPage() {
               colorFrom="#555555"
               colorTo="#c2ff01"
               style={{
-                fontSize: 'clamp(2.5rem, 8vw, 7rem)',
+                fontSize: 'clamp(2.2rem, 9vw, 7rem)',
                 fontFamily: "'Silkscreen', monospace",
                 fontWeight: 900,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.04em',
                 lineHeight: 1.1,
                 color: '#c2ff01',
                 textShadow: '0 0 40px rgba(194,255,1,0.25)'
@@ -135,25 +135,25 @@ export default function ContactPage() {
             />
           </div>
 
-          <p className="font-space text-sm sm:text-base text-white/60 max-w-xl leading-relaxed">
+          <p className="font-space text-xs sm:text-base text-white/60 max-w-xl leading-relaxed">
             Have a question, opportunity, or project proposal? Send a transmission below or reach out directly.
           </p>
         </div>
       </section>
 
       {/* ── MAIN 2-COL LAYOUT ── */}
-      <main className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <main className="max-w-7xl mx-auto px-4 sm:px-12 lg:px-20 py-10 sm:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
           {/* ── LEFT: CONTACT FORM (7 cols) ── */}
           <div className="lg:col-span-7">
-            <div className="bg-[#0c0c0c] border-2 border-[#1c1c1c] rounded-2xl p-7 sm:p-10 shadow-2xl relative overflow-hidden">
+            <div className="bg-[#0c0c0c] border-2 border-[#1c1c1c] rounded-2xl p-5 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden">
               {/* Corner accent */}
-              <div className="absolute top-0 left-0 w-20 h-20 border-l-4 border-t-4 border-[#c2ff01] rounded-tl-2xl pointer-events-none" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 border-r-4 border-b-4 border-[#ff4502] rounded-br-2xl pointer-events-none" />
+              <div className="absolute top-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-l-4 border-t-4 border-[#c2ff01] rounded-tl-2xl pointer-events-none" />
+              <div className="absolute bottom-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-r-4 border-b-4 border-[#ff4502] rounded-br-2xl pointer-events-none" />
 
-              <div className="mb-8">
-                <span className="font-silkscreen text-xs text-[#c2ff01] tracking-[3px] uppercase block mb-2">
+              <div className="mb-6 sm:mb-8">
+                <span className="font-silkscreen text-[11px] sm:text-xs text-[#c2ff01] tracking-[2px] sm:tracking-[3px] uppercase block mb-2">
                   ◄ SEND A MESSAGE ►
                 </span>
                 <div className="h-0.5 w-12 bg-[#ff4502]" />
@@ -173,8 +173,8 @@ export default function ContactPage() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label className="font-silkscreen text-[10px] text-[#c2ff01] font-bold tracking-[2px] mb-2 block uppercase">
                       ► YOUR NAME
@@ -185,7 +185,7 @@ export default function ContactPage() {
                       required
                       placeholder="Juan dela Cruz"
                       onFocus={() => sound.playHover()}
-                      className="w-full px-4 py-3.5 rounded-xl border-2 border-[#2a2a2a] bg-[#050505] text-[#fcfff7] font-space text-sm focus:outline-none focus:border-[#c2ff01] focus:shadow-[0_0_12px_rgba(194,255,1,0.15)] transition-all placeholder-[#444]"
+                      className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl border-2 border-[#2a2a2a] bg-[#050505] text-[#fcfff7] font-space text-sm focus:outline-none focus:border-[#c2ff01] focus:shadow-[0_0_12px_rgba(194,255,1,0.15)] transition-all placeholder-[#444]"
                     />
                   </div>
                   <div>
@@ -198,7 +198,7 @@ export default function ContactPage() {
                       required
                       placeholder="juan@example.com"
                       onFocus={() => sound.playHover()}
-                      className="w-full px-4 py-3.5 rounded-xl border-2 border-[#2a2a2a] bg-[#050505] text-[#fcfff7] font-space text-sm focus:outline-none focus:border-[#c2ff01] focus:shadow-[0_0_12px_rgba(194,255,1,0.15)] transition-all placeholder-[#444]"
+                      className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl border-2 border-[#2a2a2a] bg-[#050505] text-[#fcfff7] font-space text-sm focus:outline-none focus:border-[#c2ff01] focus:shadow-[0_0_12px_rgba(194,255,1,0.15)] transition-all placeholder-[#444]"
                     />
                   </div>
                 </div>
@@ -210,7 +210,7 @@ export default function ContactPage() {
                   <select
                     name="subject"
                     onFocus={() => sound.playHover()}
-                    className="w-full px-4 py-3.5 rounded-xl border-2 border-[#2a2a2a] bg-[#050505] text-[#fcfff7] font-space text-sm focus:outline-none focus:border-[#c2ff01] focus:shadow-[0_0_12px_rgba(194,255,1,0.15)] transition-all cursor-pointer"
+                    className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl border-2 border-[#2a2a2a] bg-[#050505] text-[#fcfff7] font-space text-sm focus:outline-none focus:border-[#c2ff01] focus:shadow-[0_0_12px_rgba(194,255,1,0.15)] transition-all cursor-pointer"
                   >
                     <option value="">Select a project type...</option>
                     <option value="fullstack">Full-Stack Web Application</option>
@@ -228,11 +228,11 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     name="message"
-                    rows="6"
+                    rows="5"
                     required
                     placeholder="Hi Charlie, I would like to discuss..."
                     onFocus={() => sound.playHover()}
-                    className="w-full px-4 py-3.5 rounded-xl border-2 border-[#2a2a2a] bg-[#050505] text-[#fcfff7] font-space text-sm focus:outline-none focus:border-[#c2ff01] focus:shadow-[0_0_12px_rgba(194,255,1,0.15)] transition-all resize-none placeholder-[#444]"
+                    className="w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl border-2 border-[#2a2a2a] bg-[#050505] text-[#fcfff7] font-space text-sm focus:outline-none focus:border-[#c2ff01] focus:shadow-[0_0_12px_rgba(194,255,1,0.15)] transition-all resize-none placeholder-[#444]"
                   />
                 </div>
 
@@ -240,10 +240,10 @@ export default function ContactPage() {
                   type="submit"
                   disabled={status === 'submitting'}
                   onClick={() => status !== 'submitting' && sound.playClick()}
-                  className="w-full py-4 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen text-sm font-bold uppercase tracking-[3px] rounded-xl border-2 border-[#0a0a0a] cursor-pointer disabled:opacity-50 flex items-center justify-center gap-3 hover:bg-white hover:shadow-[0_0_30px_rgba(194,255,1,0.4)] transition-all active:scale-[0.98]"
+                  className="w-full py-3.5 sm:py-4 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen text-xs sm:text-sm font-bold uppercase tracking-[2px] sm:tracking-[3px] rounded-xl border-2 border-[#0a0a0a] cursor-pointer disabled:opacity-50 flex items-center justify-center gap-3 hover:bg-white hover:shadow-[0_0_30px_rgba(194,255,1,0.4)] transition-all active:scale-[0.98]"
                 >
                   <span>{status === 'submitting' ? 'TRANSMITTING...' : 'SEND TRANSMISSION'}</span>
-                  <span className="text-lg">{status === 'submitting' ? '⏳' : '→'}</span>
+                  <span className="text-base sm:text-lg">{status === 'submitting' ? '⏳' : '→'}</span>
                 </button>
               </form>
             </div>

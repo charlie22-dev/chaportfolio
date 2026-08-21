@@ -15,19 +15,19 @@ export default function IdSection() {
   ];
 
   return (
-    <section className="w-full bg-[#0044ff] text-[#fcfff7] py-16 px-6 sm:px-10 lg:px-16 border-b-4 border-[#0a0a0a] overflow-hidden">
+    <section className="w-full bg-[#0044ff] text-[#fcfff7] py-12 sm:py-16 px-4 sm:px-10 lg:px-16 border-b-4 border-[#0a0a0a] overflow-hidden">
       {/* Top Header Decorators */}
-      <div className="max-w-[1400px] mx-auto mb-12 flex items-center justify-between">
-        <div className="font-bold text-3xl sm:text-4xl tracking-[8px] text-[#c2ff01] select-none">
+      <div className="max-w-[1400px] mx-auto mb-8 sm:mb-12 flex items-center justify-between">
+        <div className="font-bold text-2xl sm:text-4xl tracking-[6px] sm:tracking-[8px] text-[#c2ff01] select-none">
           •••
         </div>
-        <div className="text-3xl sm:text-4xl font-black text-[#0a0a0a] select-none mr-auto ml-20 sm:ml-48">
+        <div className="text-2xl sm:text-4xl font-black text-[#0a0a0a] select-none mr-auto ml-8 sm:ml-24 md:ml-48">
           →
         </div>
       </div>
 
       {/* 3-Column Estella Layout */}
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.35fr_1fr_1.15fr] gap-10 xl:gap-14 items-start">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.35fr_1fr_1.15fr] gap-8 sm:gap-10 xl:gap-14 items-start">
 
         {/* COLUMN 1: Horizontal ID Card */}
         <div className="w-full flex justify-center lg:justify-start">
