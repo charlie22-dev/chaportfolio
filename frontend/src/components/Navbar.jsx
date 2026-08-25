@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="w-full bg-transparent px-4 sm:px-8 md:px-16 pt-5 sm:pt-8 pb-3 sm:pb-4 flex items-center justify-between z-40 relative select-none">
-        {/* Left: '...' menu trigger button just like in reference */}
+        {/* Left: '...' menu trigger button */}
         <button
           onClick={handleOpenDrawer}
           onMouseEnter={() => sound.playHover()}
