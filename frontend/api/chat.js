@@ -92,8 +92,7 @@ Personality and tone guidelines:
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'qwen/qwen3-32b',
-        reasoning_effort: 'none',
+        model: 'llama-3.3-70b-versatile',
         messages,
         max_tokens: 450,
         temperature: 0.72,
