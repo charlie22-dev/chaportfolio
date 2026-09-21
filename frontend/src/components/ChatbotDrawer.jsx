@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { sendChatMessage } from '../api/client';
-import { personalInfo } from '../data/portfolioData';
+
 
 const WELCOME_MSG = {
   sender: 'bot',
@@ -64,7 +64,9 @@ export default function ChatbotDrawer() {
     } catch (error) {
       const isNetworkError = !error.response;
       const errMsg = isNetworkError
-        ? 'Cannot connect to the server. Make sure Laravel is running on port 8000.'
+        ? (error.message?.includes('VITE_GROQ_API_KEY')
+            ? error.message
+            : 'Could not reach the AI service. Check your connection and try again.')
         : (error.response?.data?.reply || 'Something went wrong. Please try again.');
 
       setMessages(prev => [...prev, { sender: 'bot', text: errMsg }]);

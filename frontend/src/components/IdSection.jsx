@@ -1,6 +1,11 @@
 import React from 'react';
 import IdCard from './IdCard';
+import TextType from './TextType';
 import { personalInfo } from '../data/portfolioData';
+import { sound } from '../utils/audio';
+
+const bioText =
+  "I'm Charlie Mer Libatod, an aspiring engineer and BSIT student who started coding in 2023. I'm passionate about software development, web technologies, and building solutions that turn ideas into reality.\n\nCurrently, I'm focused on sharpening my skills, creating meaningful projects, and growing toward a career in software engineering.";
 
 export default function IdSection() {
   const creativeTools = [
@@ -30,8 +35,61 @@ export default function IdSection() {
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.35fr_1fr_1.15fr] gap-8 sm:gap-10 xl:gap-14 items-start">
 
         {/* COLUMN 1: Horizontal ID Card */}
-        <div className="w-full flex justify-center lg:justify-start">
+        <div className="w-full flex flex-col items-center lg:items-start">
+          {/* Download CV — clipped above the ID card like a lanyard tab */}
+          <a
+            href={personalInfo.cvUrl}
+            download
+            onClick={() => sound.playClick()}
+            onMouseEnter={() => sound.playHover()}
+            className="btn-brutalist w-full mb-3 font-silkscreen text-xs sm:text-sm bg-[#c2ff01] text-[#0a0a0a] font-bold px-6 py-3 rounded-xl border-2 border-[#0a0a0a] flex items-center justify-center gap-2 shadow-[3px_3px_0px_#0a0a0a] uppercase tracking-wider hover:bg-[#0a0a0a] hover:text-[#c2ff01] transition-colors"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.75" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" x2="12" y1="15" y2="3" />
+            </svg>
+            <span>Download CV</span>
+          </a>
+
           <IdCard />
+
+          {/* Bio Terminal — reads like a system profile scan beneath the ID photo */}
+          <div className="relative w-full mt-5 bg-[#0a0a0a] rounded-2xl overflow-hidden border-2 border-[#0a0a0a] shadow-[4px_4px_0px_#0a0a0a]">
+            {/* Ambient lime glow, matching the Hero section's motif */}
+            <div className="absolute -top-8 -right-8 w-36 h-36 bg-[#c2ff01]/10 rounded-full blur-[60px] pointer-events-none" />
+
+            {/* Terminal title bar */}
+            <div className="relative flex items-center justify-between px-4 py-2.5 bg-[#111] border-b border-[#c2ff01]/15">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#ff4502]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#c2ff01]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#fcfff7]/25" />
+              </div>
+              <span className="font-silkscreen text-[8px] sm:text-[9px] text-[#fcfff7]/40 tracking-[3px]">
+                BIO.SYS
+              </span>
+            </div>
+
+            {/* Body */}
+            <div className="relative p-5 sm:p-6">
+              <p className="font-silkscreen text-[10px] sm:text-xs text-[#c2ff01] tracking-[2px] mb-3">
+                [4] WHOAMI →
+              </p>
+              <TextType
+                as="p"
+                text={[bioText]}
+                typingSpeed={20}
+                initialDelay={300}
+                loop={false}
+                startOnVisible={true}
+                showCursor={true}
+                cursorCharacter="_"
+                cursorClassName="text-[#c2ff01]"
+                className="font-space text-sm sm:text-base text-[#fcfff7]/85 leading-relaxed whitespace-pre-line"
+              />
+            </div>
+          </div>
         </div>
 
         {/* COLUMN 2: EXPERIENCE */}

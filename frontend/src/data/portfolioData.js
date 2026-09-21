@@ -11,6 +11,7 @@ export const personalInfo = {
   avatar2: "/images/charlie2.png",
   logo: "/images/chaalogo.png",
   qrCodeUrl: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/charlie22-dev",
+  cvUrl: "/files/Charlie-Mer-Libatod-CV.pdf",
 };
 
 export const aboutText = [
