@@ -92,7 +92,7 @@ Personality and tone guidelines:
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'qwen/qwen3.8-27b',
+        model: 'qwen/qwen3-32b',
         reasoning_effort: 'none',
         messages,
         max_tokens: 450,
