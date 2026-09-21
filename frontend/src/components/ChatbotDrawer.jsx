@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { sendChatMessage } from '../api/client';
-
+import { personalInfo } from '../data/portfolioData';
+import { sound } from '../utils/audio';
 
 const WELCOME_MSG = {
   sender: 'bot',
@@ -13,6 +14,27 @@ const SUGGESTIONS = [
   'Are you available for freelance?',
   'Tell me about yourself',
 ];
+
+function Avatar({ size = 'w-9 h-9', ring = true, dot = true }) {
+  return (
+    <div className="relative shrink-0">
+      <div
+        className={`${size} rounded-xl overflow-hidden bg-[#0a0a0a] ${
+          ring ? 'border-2 border-[#c2ff01]' : 'border border-[#2a2a2a]'
+        }`}
+      >
+        <img
+          src={personalInfo.avatar1}
+          alt={personalInfo.name}
+          className="w-full h-full object-cover object-top"
+        />
+      </div>
+      {dot && (
+        <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#00ff88] rounded-full border-2 border-[#0d0d0d] shadow-[0_0_8px_#00ff88]" />
+      )}
+    </div>
+  );
+}
 
 export default function ChatbotDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,9 +105,15 @@ export default function ChatbotDrawer() {
   };
 
   const handleClear = () => {
+    sound.playClick();
     setMessages([WELCOME_MSG]);
     historyRef.current = [];
     setShowSuggestions(true);
+  };
+
+  const toggleOpen = () => {
+    sound.playClick();
+    setIsOpen(prev => !prev);
   };
 
   return (
@@ -93,28 +121,29 @@ export default function ChatbotDrawer() {
 
       {/* ── CHAT WINDOW ──────────────────────────────── */}
       {isOpen && (
-        <div className="w-[calc(100vw-24px)] sm:w-[400px] max-w-[400px] bg-[#0d0d0d] border-2 border-[#c2ff01] rounded-2xl shadow-[0_0_40px_rgba(194,255,1,0.15)] overflow-hidden flex flex-col h-[min(520px,75vh)]"
-        >
+        <div className="w-[calc(100vw-24px)] sm:w-[400px] max-w-[400px] bg-[#0d0d0d] border-2 border-[#0a0a0a] rounded-2xl shadow-[5px_5px_0px_#0a0a0a] overflow-hidden flex flex-col h-[min(540px,75vh)]">
+
+          {/* Brand accent strip — ties the site's three colors together */}
+          <div className="h-1 w-full shrink-0 bg-[linear-gradient(90deg,#c2ff01_0%,#c2ff01_33%,#ff4502_33%,#ff4502_66%,#0044ff_66%,#0044ff_100%)]" />
+
           {/* Header */}
           <div className="px-4 py-3 border-b border-[#1f1f1f] flex items-center justify-between bg-[#111] shrink-0">
-            <div className="flex items-center gap-2.5">
-              {/* Avatar */}
-              <div className="relative shrink-0">
-                <div className="w-9 h-9 rounded-xl bg-[#c2ff01] text-[#0a0a0a] font-silkscreen flex items-center justify-center font-bold text-[10px] border border-[#0a0a0a]">
-                  CML
-                </div>
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#00ff88] rounded-full border-2 border-[#111] shadow-[0_0_8px_#00ff88]" />
-              </div>
-              <div>
-                <p className="font-silkscreen text-[11px] font-bold text-white leading-tight tracking-wider">
-                  CHARLIE AI
+            <div className="flex items-center gap-2.5 min-w-0">
+              <Avatar />
+              <div className="min-w-0">
+                <p className="font-silkscreen text-[11px] font-bold text-white leading-tight tracking-wider truncate">
+                  CHARLIE MER LIBATOD
                 </p>
-                <p className="font-silkscreen text-[9px] text-[#c2ff01]">
-                  ● GROQ · LLAMA-3 · ONLINE
+                <p className="font-silkscreen text-[9px] text-[#00ff88] flex items-center gap-1.5 mt-0.5">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff88] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00ff88]" />
+                  </span>
+                  ONLINE
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 shrink-0">
               <button
                 onClick={handleClear}
                 title="Clear chat"
@@ -123,7 +152,8 @@ export default function ChatbotDrawer() {
                 CLR
               </button>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={toggleOpen}
+                title="Close"
                 className="text-white/40 hover:text-[#c2ff01] font-silkscreen text-xs px-2 py-1.5 rounded transition-colors cursor-pointer"
               >
                 ✕
@@ -138,8 +168,12 @@ export default function ChatbotDrawer() {
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                 {msg.sender === 'bot' && (
-                  <div className="w-6 h-6 rounded-lg bg-[#c2ff01] text-[#0a0a0a] font-silkscreen flex items-center justify-center text-[8px] font-bold mr-2 mt-1 shrink-0">
-                    C
+                  <div className="w-6 h-6 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#c2ff01]/50 mr-2 mt-1 shrink-0">
+                    <img
+                      src={personalInfo.avatar1}
+                      alt={personalInfo.name}
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                 )}
                 <div
@@ -157,8 +191,12 @@ export default function ChatbotDrawer() {
             {/* Typing indicator */}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="w-6 h-6 rounded-lg bg-[#c2ff01] text-[#0a0a0a] font-silkscreen flex items-center justify-center text-[8px] font-bold mr-2 mt-1 shrink-0">
-                  C
+                <div className="w-6 h-6 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#c2ff01]/50 mr-2 mt-1 shrink-0">
+                  <img
+                    src={personalInfo.avatar1}
+                    alt={personalInfo.name}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
                 <div className="bg-[#181818] border border-[#2a2a2a] rounded-2xl rounded-bl-sm px-4 py-3 flex items-center gap-1.5">
                   <span className="w-2 h-2 bg-[#c2ff01] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
@@ -175,6 +213,7 @@ export default function ChatbotDrawer() {
                   <button
                     key={i}
                     onClick={() => sendMessage(s)}
+                    onMouseEnter={() => sound.playHover()}
                     className="font-space text-[11px] bg-[#141414] text-[#c2ff01] border border-[#c2ff01]/30 hover:border-[#c2ff01] hover:bg-[#c2ff01]/10 px-3 py-1.5 rounded-xl transition-all cursor-pointer"
                   >
                     {s}
@@ -199,9 +238,10 @@ export default function ChatbotDrawer() {
               className="flex-1 font-space text-xs px-3.5 py-2.5 rounded-xl border border-[#2a2a2a] bg-[#050505] text-white focus:outline-none focus:border-[#c2ff01] transition-colors placeholder-[#555] disabled:opacity-50"
             />
             <button
-              onClick={() => sendMessage(inputValue)}
+              onClick={() => { sound.playClick(); sendMessage(inputValue); }}
+              onMouseEnter={() => sound.playHover()}
               disabled={isLoading || !inputValue.trim()}
-              className="px-3.5 sm:px-4 py-2.5 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen font-bold text-[10px] rounded-xl hover:bg-white transition-all cursor-pointer disabled:opacity-40 shrink-0 tracking-wider"
+              className="btn-brutalist px-3.5 sm:px-4 py-2.5 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen font-bold text-[10px] rounded-xl border-2 border-[#0a0a0a] shadow-[2px_2px_0px_#0a0a0a] hover:bg-white transition-all cursor-pointer disabled:opacity-40 disabled:shadow-none shrink-0 tracking-wider"
             >
               SEND
             </button>
@@ -211,15 +251,22 @@ export default function ChatbotDrawer() {
 
       {/* ── TOGGLE BUTTON ──────────────────────────── */}
       <button
-        onClick={() => setIsOpen(prev => !prev)}
+        onClick={toggleOpen}
+        onMouseEnter={() => sound.playHover()}
         id="chatToggleBtn"
-        className="flex items-center gap-2.5 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen text-[11px] sm:text-xs font-bold px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl shadow-[0_0_20px_rgba(194,255,1,0.3)] border-2 border-[#0a0a0a] hover:bg-white hover:shadow-[0_0_30px_rgba(194,255,1,0.5)] transition-all cursor-pointer active:scale-95"
+        className="btn-brutalist flex items-center gap-2.5 bg-[#c2ff01] text-[#0a0a0a] font-silkscreen text-[11px] sm:text-xs font-bold pl-2 pr-4 py-2 sm:pr-5 rounded-xl shadow-[3px_3px_0px_#0a0a0a] border-2 border-[#0a0a0a] hover:bg-white transition-all cursor-pointer active:scale-95"
       >
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0044ff] opacity-75" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#0044ff]" />
-        </span>
-        <span>{isOpen ? 'CLOSE CHAT' : 'CHAT WITH CHARLIE'}</span>
+        {isOpen ? (
+          <>
+            <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#0a0a0a] text-[#c2ff01] text-xs shrink-0">✕</span>
+            <span>CLOSE CHAT</span>
+          </>
+        ) : (
+          <>
+            <Avatar size="w-7 h-7" ring={false} />
+            <span>CHAT WITH CHARLIE</span>
+          </>
+        )}
       </button>
 
     </div>
