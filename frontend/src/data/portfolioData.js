@@ -97,6 +97,55 @@ export const projectsList = [
 
 export const certificationsList = [
   {
+    title: 'Intermediate Python',
+    provider: 'DataCamp',
+    year: '2026',
+    image: '/images/certificate_intermidiate py_page-0001.jpg',
+    url: '#'
+  },
+  {
+    title: 'Explainable Artificial Intelligence (XAI) Concepts',
+    provider: 'DataCamp',
+    year: '2026',
+    image: '/images/certificate_xai_page-0001.jpg',
+    url: '#'
+  },
+  {
+    title: 'Responsible AI Practices',
+    provider: 'DataCamp',
+    year: '2026',
+    image: '/images/certificate_responsible_ai_page-0001.jpg',
+    url: '#'
+  },
+  {
+    title: 'Introduction to Python for Developers',
+    provider: 'DataCamp',
+    year: '2026',
+    image: '/images/certificate_intro_PYTHON_page-0001.jpg',
+    url: '#'
+  },
+  {
+    title: 'Monetizing Artificial Intelligence',
+    provider: 'DataCamp',
+    year: '2026',
+    image: '/images/certificate_monetizing ai_page-0001.jpg',
+    url: '#'
+  },
+  {
+    title: 'Understanding Cloud Computing',
+    provider: 'DataCamp',
+    year: '2026',
+    image: '/images/certificate_CLOUD_page-0001.jpg',
+    url: '#'
+  },
+  {
+    title: 'Understanding Artificial Intelligence',
+    provider: 'DataCamp',
+    year: '2026',
+    image: '/images/certificate_UND_AI_page-0001.jpg',
+    url: '#'
+  },
+  {
     title: 'Introduction to AI',
     provider: 'Cisco / Online Learning Platform',
     year: '2024',
