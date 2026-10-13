@@ -24,16 +24,14 @@ const fullStackProjects = [
     desc: "Sleek weather application featuring global location search, real-time temperature, atmospheric metrics, and dynamic hourly/7-day forecasts."
   },
   {
-    id: "bookverse",category: "fullstack",title: "BOOKVERSE",subtitle: "FLUTTER E-COMMERCE APP",
-    tech: ["Flutter","Dart","Python"],year: "2026",url: "https://github.com/charlie22-dev/Ecommerve_flutter",host: "github.com/charlie22-dev",
-    accent: "#F0E68C",image: "",
-    desc: "Mobile e-commerce app for browsing and buying books, built with Flutter and a Python backend."
+    id: "Bookverse", category: "fullstack", title: "BOOKVERSE", subtitle: "Eccommerce app",
+    tech: ["Flutter", "Dart", "Python"], year: "2026", url: "https://github.com/charlie22-dev/Ecommerve_flutter.git", host:"", 
+    accent: "#F0E68C", image: "", desc: ""
   },
   {
-    id: "sndrapark",category: "fullstack",title: "SNDRAPARK",subtitle: "WEB-BASED SMART PARKING RESERVATION SYSTEM",
-    tech: ["PHP","HTML5","CSS3","C++","Arduino","MySQL"],year: "2026",url: "https://github.com/charlie22-dev/sndara_for_caps",host: "github.com/charlie22-dev",
-    accent: "#00c853",image: "/images/SNDRAPARK.jpg",
-    desc: "A parking reservation platform for a multi-floor car park. A driver reserves a specific bay before arriving and gets a barcode pass."
+    id: "Sndrapark", category: "fullstack", title: "SNDRAPARK", subtitle: "Web-Based Smart Parking Reservation System",
+    tech: ["Php", "HTML5", "CSS3", "C++", "Arduino", "Mysql"], year: "2026", url: "https://github.com/charlie22-dev/sndara_for_caps.git", host: "charlie22-dev.github.io",
+    accent: "#0000, #FFFF", image:"../public/images/SNDRA.jpg", desc: "A parking reservation platform for a multi-floor car park. A driver reserves a specific bay before arriving and gets a barcode pass."
   }
 ];
 
@@ -45,7 +43,7 @@ function ProjectCard({ project }) {
       className="group cursor-pointer flex flex-col justify-between bg-[#0e0e0e] rounded-2xl overflow-hidden border-2 border-[#1c1c1c] hover:border-[#c2ff01] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(194,255,1,0.18)]"
     >
       <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#070707] border-b border-[#222]">
-        {project.image ? <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out brightness-90 group-hover:brightness-100" loading="lazy" /> : <div className="w-full h-full flex items-center justify-center font-silkscreen text-2xl font-bold tracking-widest" style={{ color: project.accent, background: `${project.accent}14` }}>{project.title}</div>}
+        <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out brightness-90 group-hover:brightness-100" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
         <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10 pointer-events-none">
           <span className="font-silkscreen text-[9px] font-bold px-2.5 py-1 rounded shadow-md uppercase tracking-wider text-white" style={{ backgroundColor: project.accent || "#ff4502" }}>{project.category}</span>
