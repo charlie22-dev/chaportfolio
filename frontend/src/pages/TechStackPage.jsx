@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Ticker from "../components/Ticker";
 import Lanyard from "../components/Lanyard";
 import GithubCalendarSection from "../components/GithubCalendarSection";
@@ -7,101 +6,117 @@ import Footer from "../components/Footer";
 import ChatbotDrawer from "../components/ChatbotDrawer";
 import { sound } from "../utils/audio";
 
+const ICON_CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons";
+const LEVELS = ["Beginner", "Intermediate", "Proficient", "Advanced"];
+const GROUPS = ["Languages", "Frontend", "Backend", "Database & Hardware", "Tools"];
+
+// icon = devicon slug; invert = logo is black and needs flipping on the dark background
 const techData = [
-  {
-    tag: "React.js", percent: 80, icon: "⚛️",
-    name: "React.js", category: "Frontend", status: "Learned & Active", level: "Advanced",
-    color: "#00d8ff",
-    desc: "Component architecture, custom hooks, state management, Vite, and Next.js SPA/SSR applications.",
-    projects: ["Sky Cast", "Appreciation Letter", "Portfolio UI System"]
-  },
-  {
-    tag: "Laravel", percent: 68, icon: "🐘",
-    name: "PHP & Laravel", category: "Backend", status: "Learned & Active", level: "Proficient",
-    color: "#ff2d20",
-    desc: "MVC architecture, Eloquent ORM, RESTful API endpoints, Blade templates, authentication, and database migrations.",
-    projects: ["Task Manager Pro", "Charlie Portfolio"]
-  },
-  {
-    tag: "Python", percent: 65, icon: "🐍",
-    name: "Python & Flask", category: "Backend / AI", status: "Learned & Active", level: "Proficient",
-    color: "#3776ab",
-    desc: "Backend routing, API services, data manipulation, MySQL database connectivity, and lightweight microservices.",
-    projects: ["Tipid Tracker", "API Microservices Engine"]
-  },
-  {
-    tag: "JavaScript", percent: 85, icon: "⚡",
-    name: "JavaScript (ES6+)", category: "Core Language", status: "Learned & Active", level: "Advanced",
-    color: "#f7df1e",
-    desc: "Asynchronous programming, DOM manipulation, Web Audio API, GSAP animations, and event-driven architectures.",
-    projects: ["Sky Cast", "Mimalicious", "Audio SFX Engine"]
-  },
-  {
-    tag: "Tailwind", percent: 92, icon: "🎨",
-    name: "Tailwind CSS", category: "Styling", status: "Learned & Active", level: "Mastered",
-    color: "#38bdf8",
-    desc: "Utility-first responsive layouts, brutalist design systems, custom themes, and high-performance CSS animations.",
-    projects: ["Portfolio Theme", "Task Manager", "All Web Apps"]
-  },
-  {
-    tag: "MySQL", percent: 65, icon: "🗄️",
-    name: "MySQL Database", category: "Database", status: "Learned & Active", level: "Proficient",
-    color: "#00758f",
-    desc: "Relational database schema modeling, indexing, ACID transactions, complex joins, and query optimization.",
-    projects: ["Tipid Tracker", "Task Manager Pro"]
-  },
-  {
-    tag: "HTML5", percent: 95, icon: "🌐",
-    name: "HTML5 & Semantic Web", category: "Core", status: "Learned & Active", level: "Mastered",
-    color: "#e34f26",
-    desc: "Clean accessible markup, SEO optimization, responsive layout structures, and cross-browser standard compatibility.",
-    projects: ["Mimalicious", "Web App Skeletons"]
-  },
-  {
-    tag: "Next.js", percent: 45, icon: "▲",
-    name: "Next.js & SSR", category: "Currently Learning", status: "In Progress", level: "Intermediate",
-    color: "#ffffff",
-    desc: "Server-side rendering, static site generation (SSG), App Router, server actions, and edge API routes.",
-    projects: ["Modern Fullstack Apps", "Next.js Lab"]
-  },
-  {
-    tag: "TypeScript", percent: 42, icon: "🔷",
-    name: "TypeScript", category: "Currently Learning", status: "In Progress", level: "Intermediate",
-    color: "#3178c6",
-    desc: "Static typing, generics, interfaces, strict mode type safety, and typed React component props.",
-    projects: ["Typed API Interfaces", "Fullstack Modules"]
-  },
-  {
-    tag: "Node.js", percent: 48, icon: "🟢",
-    name: "Node.js & Express", category: "Currently Learning", status: "In Progress", level: "Intermediate",
-    color: "#68a063",
-    desc: "Event loop architecture, non-blocking I/O server scripts, middleware pipelines, and JWT authentication services.",
-    projects: ["Microservice Endpoints", "Backend Workers"]
-  },
-  {
-    tag: "Docker", percent: 28, icon: "🐳",
-    name: "Docker & DevOps", category: "Currently Learning", status: "In Progress", level: "Fundamental",
-    color: "#2496ed",
-    desc: "Containerization, Dockerfile recipes, multi-container compose, environment reproducibility, and cloud deployments.",
-    projects: ["Local Dev Containers", "Railway Cloud Deploy"]
-  },
-  {
-    tag: "Git", percent: 72, icon: "🐙",
-    name: "Git & GitHub Workflows", category: "Workflow", status: "Learned & Active", level: "Proficient",
-    color: "#f05032",
-    desc: "Branching strategies, pull requests, semantic commit conventions, GitHub Pages, and CI/CD pipelines.",
-    projects: ["All Repositories", "Open Source Projects"]
-  }
+  { icon: "javascript", name: "JavaScript", group: "Languages", learning: false, level: "Advanced", color: "#f7df1e",
+    desc: "ES6+, async/await, DOM manipulation, Web Audio API and GSAP animations.", projects: ["Mimalicious", "Sky Cast"] },
+  { icon: "python", name: "Python", group: "Languages", learning: false, level: "Proficient", color: "#3776ab",
+    desc: "Backend services, data handling and MySQL connectivity.", projects: ["Tipid Tracker", "Bookverse"] },
+  { icon: "php", name: "PHP", group: "Languages", learning: false, level: "Proficient", color: "#777bb4",
+    desc: "Server-side logic, sessions, form handling and MySQL queries.", projects: ["Sndrapark"] },
+  { icon: "dart", name: "Dart", group: "Languages", learning: false, level: "Intermediate", color: "#0175c2",
+    desc: "Typed, async code for Flutter mobile apps.", projects: ["Bookverse"] },
+  { icon: "cplusplus", name: "C++", group: "Languages", learning: false, level: "Intermediate", color: "#00599c",
+    desc: "Microcontroller firmware for sensors and hardware control.", projects: ["Sndrapark"] },
+  { icon: "typescript", name: "TypeScript", group: "Languages", learning: true, level: "Beginner", color: "#3178c6",
+    desc: "Static typing, interfaces and typed React props." },
+
+  { icon: "html5", name: "HTML5", group: "Frontend", learning: false, level: "Advanced", color: "#e34f26",
+    desc: "Semantic, accessible markup and responsive page structure.", projects: ["Mimalicious", "Sndrapark"] },
+  { icon: "css3", name: "CSS3", group: "Frontend", learning: false, level: "Advanced", color: "#1572b6",
+    desc: "Flexbox, grid, animations and responsive layouts.", projects: ["Mimalicious", "Sndrapark"] },
+  { icon: "react", name: "React", group: "Frontend", learning: false, level: "Advanced", color: "#61dafb",
+    desc: "Components, hooks, state management and Vite-based SPAs.", projects: ["Sky Cast", "This portfolio"] },
+  { icon: "tailwindcss", name: "Tailwind CSS", group: "Frontend", learning: false, level: "Advanced", color: "#38bdf8",
+    desc: "Utility-first responsive design systems and custom themes.", projects: ["Sky Cast", "This portfolio"] },
+  { icon: "flutter", name: "Flutter", group: "Frontend", learning: false, level: "Intermediate", color: "#02569b",
+    desc: "Cross-platform mobile UI with widgets and state management.", projects: ["Bookverse"] },
+  { icon: "nextjs", name: "Next.js", group: "Frontend", learning: true, level: "Intermediate", color: "#ffffff", invert: true,
+    desc: "Server-side rendering, App Router and server actions." },
+
+  { icon: "flask", name: "Flask", group: "Backend", learning: false, level: "Proficient", color: "#ffffff", invert: true,
+    desc: "Routing, Jinja2 templates, REST endpoints and auth.", projects: ["Tipid Tracker"] },
+  { icon: "laravel", name: "Laravel", group: "Backend", learning: false, level: "Proficient", color: "#ff2d20",
+    desc: "MVC, Eloquent ORM, migrations and REST APIs.", projects: ["This portfolio's chatbot API"] },
+  { icon: "nodejs", name: "Node.js", group: "Backend", learning: true, level: "Intermediate", color: "#68a063",
+    desc: "Express servers, middleware and JWT authentication." },
+
+  { icon: "mysql", name: "MySQL", group: "Database & Hardware", learning: false, level: "Proficient", color: "#00758f",
+    desc: "Relational schema design, joins and indexing.", projects: ["Tipid Tracker", "Sndrapark"] },
+  { icon: "arduino", name: "Arduino", group: "Database & Hardware", learning: false, level: "Intermediate", color: "#00979d",
+    desc: "Sensors and controllers wired to a web system.", projects: ["Sndrapark"] },
+
+  { icon: "git", name: "Git & GitHub", group: "Tools", learning: false, level: "Proficient", color: "#f05032",
+    desc: "Branching, pull requests and GitHub Pages deploys.", projects: ["All projects"] },
+  { icon: "docker", name: "Docker", group: "Tools", learning: true, level: "Beginner", color: "#2496ed",
+    desc: "Dockerfiles, compose and reproducible dev environments." }
 ];
 
+function LevelDots({ level, color }) {
+  const filled = LEVELS.indexOf(level) + 1;
+  return (
+    <div className="flex gap-1" aria-label={`${level} level`}>
+      {LEVELS.map((_, i) => (
+        <span key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: i < filled ? color : "#2a2a2a" }} />
+      ))}
+    </div>
+  );
+}
+
+function TechCard({ tech, open, onToggle }) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      onMouseEnter={() => sound.playHover()}
+      aria-expanded={open}
+      className={`text-left w-full p-3.5 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
+        open ? "bg-[#141414] border-[#c2ff01]" : "bg-[#0b0b0b] border-[#1c1c1c] hover:border-white/30 hover:bg-[#111111]"
+      }`}
+    >
+      <div className="flex items-center gap-3">
+        <img src={`${ICON_CDN}/${tech.icon}/${tech.icon}-original.svg`} alt="" className={`w-8 h-8 flex-shrink-0 ${tech.invert ? "invert" : ""}`} loading="lazy" />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            <h4 className="font-space font-bold text-sm text-white truncate">{tech.name}</h4>
+            {tech.learning && (
+              <span className="font-silkscreen text-[7px] text-[#c2ff01] border border-[#c2ff01]/40 rounded px-1 py-0.5 flex-shrink-0">LEARNING</span>
+            )}
+          </div>
+          <div className="flex items-center gap-2 mt-1">
+            <LevelDots level={tech.level} color={tech.color} />
+            <span className="font-silkscreen text-[8px] text-white/45 uppercase">{tech.level}</span>
+          </div>
+        </div>
+      </div>
+
+      {open && (
+        <div className="mt-3 pt-3 border-t border-white/10 text-xs font-space text-white/70">
+          <p className="leading-relaxed">{tech.desc}</p>
+          {tech.projects && (
+            <div className="flex flex-wrap items-center gap-1.5 pt-2">
+              <span className="font-silkscreen text-[8px] text-white/40">USED IN:</span>
+              {tech.projects.map((p) => (
+                <span key={p} className="font-silkscreen text-[8px] bg-[#1a1a1a] text-[#c2ff01] border border-[#c2ff01]/20 px-1.5 py-0.5 rounded">{p}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </button>
+  );
+}
+
 export default function TechStackPage() {
-  const navigate = useNavigate();
   const [filterMode, setFilterMode] = useState("all");
   const [selectedTech, setSelectedTech] = useState(null);
 
   const filteredTechs = filterMode === "all" ? techData
-    : filterMode === "learned" ? techData.filter(t => t.status === "Learned & Active")
-    : techData.filter(t => t.status === "In Progress");
+    : techData.filter(t => t.learning === (filterMode === "learning"));
 
   const handleFilterChange = (mode) => {
     sound.playClick();
@@ -137,7 +152,7 @@ export default function TechStackPage() {
           </div>
 
           <div className="flex flex-wrap gap-2 font-silkscreen text-[10px] sm:text-xs">
-            {[{key:"all",label:`ALL (${techData.length})`},{key:"learned",label:"LEARNED"},{key:"learning",label:"LEARNING"}].map(({key,label}) => (
+            {[{key:"all",label:`ALL (${techData.length})`},{key:"learned",label:"USING NOW"},{key:"learning",label:"LEARNING"}].map(({key,label}) => (
               <button
                 key={key}
                 onClick={() => handleFilterChange(key)}
@@ -156,99 +171,39 @@ export default function TechStackPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-12 lg:px-16 py-10 sm:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-          {/* ── LEFT: FIXED PERCENTAGE BENCHMARKS GRID (7 Cols) ── */}
-          <div className="lg:col-span-7 flex flex-col space-y-5">
-
-            {/* Header row */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <div>
-                <span className="font-silkscreen text-xs text-[#c2ff01] tracking-[2px] uppercase block">
-                  // SKILLS &amp; PROFICIENCY MATRIX
-                </span>
-                <span className="font-mono text-xs text-white/40 mt-0.5 block">
-                  {filteredTechs.length} TECHNOLOGIES TRACKED
-                </span>
-              </div>
+          {/* ── LEFT: SKILLS GROUPED BY CATEGORY (7 Cols) ── */}
+          <div className="lg:col-span-7 flex flex-col space-y-8">
+            <div className="border-b border-white/10 pb-3">
+              <span className="font-silkscreen text-xs text-[#c2ff01] tracking-[2px] uppercase block">
+                // SKILLS &amp; PROFICIENCY
+              </span>
+              <span className="font-mono text-xs text-white/40 mt-0.5 block">
+                {filteredTechs.length} TECHNOLOGIES · TAP ONE FOR DETAILS
+              </span>
             </div>
 
-            {/* Fixed Percentage Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {filteredTechs.map((tech) => {
-                const isSelected = selectedTech?.name === tech.name;
-                return (
-                  <div
-                    key={tech.name}
-                    onClick={() => {
-                      sound.playClick();
-                      setSelectedTech(isSelected ? null : tech);
-                    }}
-                    onMouseEnter={() => sound.playHover()}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer ${
-                      isSelected
-                        ? "bg-[#141414] border-[#c2ff01] shadow-[0_0_20px_rgba(194,255,1,0.18)] scale-[1.02]"
-                        : "bg-[#0b0b0b] border-[#1c1c1c] hover:border-white/30 hover:bg-[#111111]"
-                    }`}
-                  >
-                    {/* Top row: Icon + Name + Percentage */}
-                    <div className="flex items-center justify-between gap-2 mb-2.5">
-                      <div className="flex items-center gap-3 min-w-0">
-                        <span className="text-2xl flex-shrink-0">{tech.icon}</span>
-                        <div className="min-w-0">
-                          <h4 className="font-silkscreen text-xs font-bold text-white truncate leading-tight">
-                            {tech.name}
-                          </h4>
-                          <span className="font-space text-[10px] text-white/50 block">
-                            {tech.category}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="text-right flex-shrink-0">
-                        <span
-                          className="font-silkscreen font-bold text-lg leading-none block"
-                          style={{ color: tech.color }}
-                        >
-                          {tech.percent}%
-                        </span>
-                        <span className="font-silkscreen text-[8px] text-white/40 uppercase">
-                          {tech.level}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Animated Progress bar */}
-                    <div className="h-2 bg-[#161616] rounded-full overflow-hidden border border-white/5">
-                      <div
-                        style={{
-                          width: `${tech.percent}%`,
-                          height: "100%",
-                          background: `linear-gradient(90deg, ${tech.color}44, ${tech.color})`,
-                          borderRadius: "9999px",
-                          boxShadow: `0 0 10px ${tech.color}44`,
-                          transition: "width 0.8s cubic-bezier(0.16,1,0.3,1)"
-                        }}
-                      />
-                    </div>
-
-                    {/* Expanded description on click */}
-                    {isSelected && (
-                      <div className="mt-3 pt-3 border-t border-white/10 text-xs font-space text-white/70 animate-in fade-in">
-                        <p className="mb-2 leading-relaxed">{tech.desc}</p>
-                        {tech.projects && (
-                          <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                            <span className="font-silkscreen text-[8px] text-white/40">PROJECTS:</span>
-                            {tech.projects.map((p, i) => (
-                              <span key={i} className="font-silkscreen text-[8px] bg-[#1a1a1a] text-[#c2ff01] border border-[#c2ff01]/20 px-1.5 py-0.5 rounded">
-                                {p}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    )}
+            {GROUPS.map((group) => {
+              const items = filteredTechs.filter(t => t.group === group);
+              if (!items.length) return null;
+              return (
+                <section key={group}>
+                  <h3 className="font-silkscreen text-[11px] text-white/60 tracking-[2px] uppercase mb-3">{group}</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {items.map((tech) => {
+                      const open = selectedTech === tech.name;
+                      return (
+                        <TechCard
+                          key={tech.name}
+                          tech={tech}
+                          open={open}
+                          onToggle={() => { sound.playClick(); setSelectedTech(open ? null : tech.name); }}
+                        />
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
+                </section>
+              );
+            })}
           </div>
 
           {/* ── RIGHT: LANYARD CARD (5 Cols) ── */}
