@@ -9,14 +9,14 @@ const bioText =
 
 export default function IdSection() {
   const creativeTools = [
-    { name: 'Photoshop / UI', short: 'Ps' },
-    { name: 'Illustrator / Vector', short: 'Ai' },
-    { name: 'Premiere / Video', short: 'Pr' },
-    { name: 'Lightroom / Photo', short: 'Lr' },
-    { name: 'React.js', short: 'Re' },
-    { name: 'PHP / Laravel', short: 'PHP' },
-    { name: 'Python / Flask', short: 'Py' },
-    { name: 'Tailwind CSS', short: 'Tw' },
+    { name: 'Claude (Anthropic)', short: 'Cl' },
+    { name: 'Cursor AI Editor', short: 'Cu' },
+    { name: 'VS Code', short: 'VS' },
+    { name: 'GitHub Copilot', short: 'Co' },
+    { name: 'Windsurf AI', short: 'Ws' },
+    { name: 'Postman', short: 'Pm' },
+    { name: 'Figma', short: 'Fg' },
+    { name: 'Docker', short: 'Dk' },
   ];
 
   return (
@@ -196,7 +196,7 @@ export default function IdSection() {
           {/* 2. CREATIVE TOOLS */}
           <div>
             <div className="inline-block font-silkscreen bg-[#ff4502] text-[#fcfff7] px-8 py-2.5 text-xl font-bold tracking-wider rounded-lg shadow-md border-2 border-[#ff4502] mb-4">
-              CREATIVE TOOLS
+              DEV TOOLS
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -212,51 +212,6 @@ export default function IdSection() {
             </div>
           </div>
 
-          {/* 3. CONTACT */}
-          <div>
-            <div className="inline-block font-silkscreen bg-[#ff4502] text-[#fcfff7] px-8 py-2.5 text-xl font-bold tracking-wider rounded-lg shadow-md border-2 border-[#ff4502] mb-4">
-              CONTACT
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-space">
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-[#c2ff01] transition-colors"
-              >
-                <span>📱</span>
-                <span>@charlie22-dev</span>
-              </a>
-
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="flex items-center gap-2 hover:text-[#c2ff01] transition-colors truncate"
-                title={personalInfo.email}
-              >
-                <span>✉️</span>
-                <span className="truncate">{personalInfo.email}</span>
-              </a>
-
-              <a
-                href={personalInfo.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-[#c2ff01] transition-colors"
-              >
-                <span>📘</span>
-                <span>Charlie Mer Libatod</span>
-              </a>
-
-              <a
-                href="tel:09279132322"
-                className="flex items-center gap-2 hover:text-[#c2ff01] transition-colors"
-              >
-                <span>📞</span>
-                <span>+63 0927 913 2322</span>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
