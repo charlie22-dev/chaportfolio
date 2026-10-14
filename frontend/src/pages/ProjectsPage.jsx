@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import Ticker from "../components/Ticker";
 import Footer from "../components/Footer";
 import ChatbotDrawer from "../components/ChatbotDrawer";
@@ -25,13 +25,13 @@ const fullStackProjects = [
   },
   {
     id: "Bookverse", category: "fullstack", title: "BOOKVERSE", subtitle: "Eccommerce app",
-    tech: ["Flutter", "Dart", "Python"], year: "2026", url: "https://github.com/charlie22-dev/Ecommerve_flutter.git", host:"", 
-    accent: "#F0E68C", image: "", desc: ""
+    tech: ["Flutter", "Dart", "Python"], year: "2026", url: "https://github.com/charlie22-dev/Ecommerve_flutter.git", host: "github.com/charlie22-dev",
+    accent: "#F0E68C", image: null, desc: "A Flutter & Dart e-commerce mobile app with Python backend."
   },
   {
     id: "Sndrapark", category: "fullstack", title: "SNDRAPARK", subtitle: "Web-Based Smart Parking Reservation System",
     tech: ["Php", "HTML5", "CSS3", "C++", "Arduino", "Mysql"], year: "2026", url: "https://github.com/charlie22-dev/sndara_for_caps.git", host: "charlie22-dev.github.io",
-    accent: "#0000, #FFFF", image:"../public/images/SNDRA.jpg", desc: "A parking reservation platform for a multi-floor car park. A driver reserves a specific bay before arriving and gets a barcode pass."
+    accent: "#0000, #FFFF", image: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1200&q=80", desc: "A parking reservation platform for a multi-floor car park. A driver reserves a specific bay before arriving and gets a barcode pass."
   }
 ];
 
@@ -43,7 +43,10 @@ function ProjectCard({ project }) {
       className="group cursor-pointer flex flex-col justify-between bg-[#0e0e0e] rounded-2xl overflow-hidden border-2 border-[#1c1c1c] hover:border-[#c2ff01] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(194,255,1,0.18)]"
     >
       <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#070707] border-b border-[#222]">
-        <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out brightness-90 group-hover:brightness-100" loading="lazy" />
+        {project.image
+          ? <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out brightness-90 group-hover:brightness-100" loading="lazy" />
+          : <div className="w-full h-full bg-[#111] flex items-center justify-center font-silkscreen text-xs text-white/30 tracking-widest">NO PREVIEW</div>
+        }
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
         <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10 pointer-events-none">
           <span className="font-silkscreen text-[9px] font-bold px-2.5 py-1 rounded shadow-md uppercase tracking-wider text-white" style={{ backgroundColor: project.accent || "#ff4502" }}>{project.category}</span>
