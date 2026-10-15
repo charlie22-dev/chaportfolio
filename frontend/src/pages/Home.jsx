@@ -60,3 +60,5 @@ export default function Home() {
     </>
   );
 }
+
+// Home page: parent view orchestrating main landing sections
