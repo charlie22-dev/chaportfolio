@@ -35,3 +35,5 @@ export default function Experience() {
     </div>
   );
 }
+
+// Experience: timeline view of milestones and professional journey
