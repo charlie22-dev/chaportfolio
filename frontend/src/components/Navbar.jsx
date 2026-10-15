@@ -67,3 +67,5 @@ export default function Navbar() {
 }
 
 // Navbar: main application navigation bar and routing links
+
+// Responsive: mobile navigation drawer toggle and interaction handling
