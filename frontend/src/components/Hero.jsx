@@ -77,3 +77,5 @@ export default function Hero() {
     </section>
   );
 }
+
+// Hero: landing hero section and call-to-action buttons
