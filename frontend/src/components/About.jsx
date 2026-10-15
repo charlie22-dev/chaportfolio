@@ -32,3 +32,5 @@ export default function About() {
 }
 
 // About view: biographical summary and developer profile
+
+// Layout: responsive container and section typography
