@@ -192,3 +192,5 @@ export const socialLinks = [
   { name: 'Instagram', url: 'https://www.instagram.com/h3y.chaa', handle: 'instagram.com/h3y.chaa', icon: '📸' },
   { name: 'Phone', url: 'tel:09279132322', handle: '0927 913 2322', icon: '📱' }
 ];
+
+// Documentation: portfolio data configuration constants
