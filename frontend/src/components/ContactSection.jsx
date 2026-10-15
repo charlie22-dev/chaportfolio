@@ -50,3 +50,5 @@ export default function ContactSection() {
     </section>
   );
 }
+
+// ContactSection: communication options and form layout
