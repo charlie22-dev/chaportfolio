@@ -369,3 +369,5 @@ const ProfileCardComponent = ({
 
 const ProfileCard = React.memo(ProfileCardComponent);
 export default ProfileCard;
+
+// ProfileCard: interactive developer profile card component
