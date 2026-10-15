@@ -200,3 +200,5 @@ export const socialLinks = [
 // Structure: primary technology stack grouping
 
 // References: project repository endpoints and demo URLs
+
+// Certification: course records and credential index
