@@ -34,3 +34,5 @@ export default function Ticker({
     </div>
   );
 }
+
+// Ticker: endless marquee animation strip with delimiter badges
