@@ -35,3 +35,5 @@ export default function Certifications() {
     </div>
   );
 }
+
+// Certifications: verified achievement cards grid
