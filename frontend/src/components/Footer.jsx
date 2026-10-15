@@ -16,3 +16,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+// Footer: copyright text and social navigation shortcuts
