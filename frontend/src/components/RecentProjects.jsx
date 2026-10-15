@@ -268,3 +268,5 @@ export default function RecentProjects() {
 }
 
 // RecentProjects: selected featured projects showcase
+
+// Interaction: active project tab state and accordion synchronization
