@@ -274,3 +274,5 @@ export default function ChatbotDrawer() {
 }
 
 // ChatbotDrawer: interactive AI assistant dialog component
+
+// State: message history and request dispatch lifecycle
