@@ -266,3 +266,5 @@ export default function RecentProjects() {
     </section>
   );
 }
+
+// RecentProjects: selected featured projects showcase
