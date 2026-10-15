@@ -219,3 +219,5 @@ export default function IdSection() {
 }
 
 // IdSection: comprehensive developer identity and skillset block
+
+// Tools: curated list of modern developer tools and AI assistants
