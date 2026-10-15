@@ -198,3 +198,5 @@ export const socialLinks = [
 // Verification: profile links and media asset references
 
 // Structure: primary technology stack grouping
+
+// References: project repository endpoints and demo URLs
