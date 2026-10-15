@@ -180,3 +180,5 @@ export default function IdCard() {
     </div>
   );
 }
+
+// IdCard: interactive 3D ID license card component
