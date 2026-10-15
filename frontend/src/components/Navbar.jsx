@@ -65,3 +65,5 @@ export default function Navbar() {
     </>
   );
 }
+
+// Navbar: main application navigation bar and routing links
