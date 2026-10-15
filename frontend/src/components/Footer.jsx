@@ -18,3 +18,5 @@ export default function Footer() {
 }
 
 // Footer: copyright text and social navigation shortcuts
+
+// Theming: footer styling aligned with cyber-brutalist theme
