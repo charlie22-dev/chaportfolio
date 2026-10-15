@@ -41,3 +41,5 @@ export default function SocialLinks() {
 }
 
 // SocialLinks: external social network link triggers
+
+// Audio: sound feedback integration for hover and click states
