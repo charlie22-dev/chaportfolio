@@ -37,3 +37,5 @@ export default function Experience() {
 }
 
 // Experience: timeline view of milestones and professional journey
+
+// Timeline: milestone indicator nodes and date badges
