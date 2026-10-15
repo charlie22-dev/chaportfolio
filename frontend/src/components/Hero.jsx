@@ -79,3 +79,5 @@ export default function Hero() {
 }
 
 // Hero: landing hero section and call-to-action buttons
+
+// Visuals: hero badge elements and accent border accents
