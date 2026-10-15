@@ -115,3 +115,5 @@ export default function TechStackSummary() {
     </section>
   );
 }
+
+// TechStackSummary: compact technology badges and categorized tags
