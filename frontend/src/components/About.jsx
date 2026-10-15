@@ -30,3 +30,5 @@ export default function About() {
     </div>
   );
 }
+
+// About view: biographical summary and developer profile
