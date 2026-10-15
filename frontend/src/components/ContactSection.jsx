@@ -52,3 +52,5 @@ export default function ContactSection() {
 }
 
 // ContactSection: communication options and form layout
+
+// Feedback: input validation and dispatch status notifications
