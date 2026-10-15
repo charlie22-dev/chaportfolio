@@ -196,3 +196,5 @@ export const socialLinks = [
 // Documentation: portfolio data configuration constants
 
 // Verification: profile links and media asset references
+
+// Structure: primary technology stack grouping
