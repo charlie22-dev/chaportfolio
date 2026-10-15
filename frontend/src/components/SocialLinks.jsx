@@ -39,3 +39,5 @@ export default function SocialLinks() {
     </div>
   );
 }
+
+// SocialLinks: external social network link triggers
