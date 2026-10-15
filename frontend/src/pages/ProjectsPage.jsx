@@ -139,3 +139,5 @@ export default function ProjectsPage() {
     </div>
   );
 }
+
+// ProjectsPage: full archive catalog of web and mobile software
