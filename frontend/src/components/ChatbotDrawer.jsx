@@ -272,3 +272,5 @@ export default function ChatbotDrawer() {
     </div>
   );
 }
+
+// ChatbotDrawer: interactive AI assistant dialog component
