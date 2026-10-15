@@ -37,3 +37,5 @@ export default function Certifications() {
 }
 
 // Certifications: verified achievement cards grid
+
+// Thumbnail: credential badge rendering with aspect ratio
