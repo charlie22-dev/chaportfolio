@@ -371,3 +371,5 @@ const ProfileCard = React.memo(ProfileCardComponent);
 export default ProfileCard;
 
 // ProfileCard: interactive developer profile card component
+
+// Motion: tilt orientation matrix and mousemove tracker
