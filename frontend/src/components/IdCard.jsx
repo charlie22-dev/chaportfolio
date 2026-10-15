@@ -182,3 +182,5 @@ export default function IdCard() {
 }
 
 // IdCard: interactive 3D ID license card component
+
+// Lighting: specular glare calculation on mouse coordinate change
